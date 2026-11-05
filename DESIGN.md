@@ -99,6 +99,7 @@ typography:
     lineHeight: 1.45
 rounded:
   pill: "999px"
+  round: "50%"
   tile: "18px"
   focus: "6px"
 spacing:
@@ -128,6 +129,11 @@ components:
     textColor: "{colors.choco}"
   feed-tile:
     rounded: "{rounded.tile}"
+  social-button:
+    backgroundColor: "{colors.sand}"
+    textColor: "{colors.choco}"
+    rounded: "{rounded.round}"
+    size: "48px"
 ---
 
 # Design System: Piccino bakery
@@ -138,7 +144,7 @@ components:
 
 Every section is a drenched field of warm bakery colour (chocolate-brown, terracotta, sand, cream), and a cut-out cookie photograph, larger than any word on screen, bleeds off its edge. The palette is taken from the brand's real Instagram, so it reads as baked goods and packaging rather than poster primaries. Type is one heavy variable grotesque set tight and huge; colour does the structuring, never lines or boxes. Panels are angled, cookies are tilted, nothing sits square.
 
-Motion is physical: cookies are thrown in and settle on a spring, a classic gets bitten frame by frame as you scroll and drops real crumbs, the seal spins in. Everything resolves to a complete static poster under `prefers-reduced-motion`.
+Motion is physical: cookies are thrown in and settle on a spring, letters rise one by one, a classic gets bitten frame by frame as you scroll and drops real crumbs, the seal pops in. Everything resolves to a complete static poster under `prefers-reduced-motion`.
 
 **Key Characteristics:**
 - Full-bleed colour fields, one per section, edge to edge.
@@ -155,7 +161,7 @@ A warm, food-derived palette: two browns and a terracotta as the brand fields, s
 - **Terracotta** (terra): the hero's angled panel, the bite section field, the red-velvet feed tile. Carries cream (never smaller than body size on it, see rules).
 
 ### Secondary
-- **Apricot** (apricot): text on dark only: the third value word and the footer wordmark, both on chocolate.
+- **Apricot** (apricot): text on dark only: the third value word the footer wordmark and the footer social-button hover, all on chocolate.
 
 ### Tertiary (flavour accents)
 - **Red Velvet Crimson** (crimson), **Pistachio Sage** (pista), **Raspberry** (rasp): used on their own flavour's slab or feed tile.
@@ -163,7 +169,7 @@ A warm, food-derived palette: two browns and a terracotta as the brand fields, s
 ### Neutral
 - **Sand** (sand): wordmark, pills, seal, manifesto field, clásica slab, text selection, first value word.
 - **Cream** (cream): page background, flavours section, light text on dark and saturated fields.
-- **Chocolate** (choco): body text on light fields, values and footer fields, marroc slab, seal ink, scrollbar, and the shadow tint (`rgb(29 10 6)`).
+- **Chocolate** (choco): body text on light fields, values and footer fields, marroc slab, seal ink, scrollbar, the `html` background (so overscroll never flashes a light edge), and the shadow tint (`rgb(29 10 6)`).
 
 ### Named Rules
 **The One Field Rule.** Each section owns exactly one background colour; a new section changes colour rather than adding a box.
@@ -182,7 +188,7 @@ A warm, food-derived palette: two browns and a terracotta as the brand fields, s
 **Character:** One chunky, slightly quirky grotesque doing everything from a 22rem wordmark to a 0.95rem note; contrast comes from size and weight, not from a second face.
 
 ### Hierarchy
-- **Display** (800, clamp 5.5rem / 27.5vw / 22rem, 0.78-0.8): the "Piccino" wordmark in the hero; the footer wordmark uses the same voice at clamp 6rem / 33vw / 30rem (line-height 0.72) in apricot. Bleeds off the edge (`white-space: nowrap`).
+- **Display** (800, clamp 5.5rem / 27.5vw / 22rem, 0.78-0.8): the "Piccino" wordmark in the hero; the footer wordmark uses the same voice at clamp 6rem / 33vw / 30rem (line-height 0.72) in apricot, cropped at the bottom of the footer. Bleeds off the edge (`white-space: nowrap`).
 - **Display-sub** (800, clamp 3rem / 15vw / 11rem, 0.8): "bakery" under the hero wordmark; from 900px it is clamp 4rem / 10vw / 10rem and the wordmark is 25.5vw (0.78). In landscape phones both follow height: wordmark min(21vw, 31svh), "bakery" min(10vw, 15svh).
 - **Wordmark note** (650, clamp 1rem / 0.85rem + 0.6vw / 1.35rem, 1.2, -0.01em): the line under the hero wordmark; 0.95rem in landscape phones.
 - **Value** (800, clamp 3.4rem to 10rem, 0.85): the three value words.
@@ -192,8 +198,8 @@ A warm, food-derived palette: two browns and a terracotta as the brand fields, s
 - **Subhead** (800, clamp 2.2rem to 5rem, 0.95): bite-step lines.
 - **Lead** (650, clamp 1.5rem to 2.4rem, 1.1, max 14ch): hero line. **Lead-sm** (700, clamp 1.4rem to 2.2rem, 1.1, max 22ch): footer line; the bite **Remate** (700, clamp 1.5rem / 1.1rem + 1.4vw / 2rem; 1.05rem in landscape phones) uses the same voice. In landscape phones the hero line becomes clamp 1.15rem / 4.8svh / 1.5rem and bite steps clamp 1.5rem / 9svh / 2.6rem.
 - **Body** (400-550, clamp 1.0625rem to 1.25rem, 1.45, 26-32ch): flavour and value lines, manifesto sign (650, 1.15rem).
-- **Label** (750, 1.05rem): pill buttons. **Nav** (650, clamp 0.875rem / 0.75rem + 0.4vw / 0.95rem; small phones sit at 0.875rem): nav links. **Brand** (800, 1.15rem, 1rem under 360px, -0.02em): nav wordmark. Sentence case, no tracking.
-- **Note** (400, 0.95rem): Instagram handle line and footer credit.
+- **Label** (750, 1.05rem): pill buttons and footer column headings (sentence case, sand, no eyebrow styling). **Nav** (650, clamp 0.875rem / 0.75rem + 0.4vw / 0.95rem; small phones sit at 0.875rem): nav links. **Brand** (800, 1.15rem, 1rem under 360px, -0.02em): nav wordmark; the footer logo uses the same 1.15rem (no small-phone step). Sentence case, no tracking.
+- **Note** (400, 0.95rem): Instagram handle line, footer column text and the footer legal row.
 
 ### Seal-internal sizes
 The seal text (14.5 ring text, 25 "Piccino", 10 "BAKERY" sub) is set in SVG viewBox units inside a 200x200 seal, so it scales with the seal and is not a screen-px size; it is not part of the ramp above.
@@ -203,20 +209,22 @@ The seal text (14.5 ring text, 25 "Piccino", 10 "BAKERY" sub) is set in SVG view
 
 ## Layout
 
-Stacked full-bleed sections, side padding `gutter` (16-48px). No container grid; copy is held by `ch` measures, while cookies are absolutely positioned and cropped by `overflow: clip`. Section padding is fluid, roughly 90-180px top. Breakpoints: 760px (flavour slabs go side by side, text max 40%) and 900px (hero recomposes: terracotta panel to the right half, red velvet centred and cropped at the bottom). Flavours alternate sides: odd rows text left and cookie right, even rows the reverse with right-aligned text. The bite section is a 420svh scroll track with a sticky 100svh stage; under reduced motion it collapses to one static frame. Landscape phones (max-height 520px, landscape) get a recomposed hero and bite stage sized by svh. Crumbs re-place themselves on resize.
+Stacked full-bleed sections, side padding `gutter` (16-48px). No container grid; copy is held by `ch` measures, while cookies are absolutely positioned and cropped by `overflow: clip`. Section padding is fluid, roughly 90-180px top. Breakpoints: 760px (flavour slabs go side by side, text max 40%) and 900px (hero recomposes: terracotta panel to the right half, red velvet centred and cropped at the bottom). Flavours alternate sides: odd rows text left and cookie right, even rows the reverse with right-aligned text. The bite section is a 420svh scroll track with a sticky stage of 100dvh (100svh as fallback), and its top edge interlocks with the last flavour slab through a terracotta wedge (`::before`, same ~8° cut) that leaves a 10px cream line; under reduced motion it collapses to one static frame. Landscape phones (max-height 520px, landscape) get a recomposed hero and bite stage sized by svh. Crumbs re-place themselves on resize.
 
-**Touch and pointer.** Nav links are at least 44px tall. Hover effects (pill, nav underline, flavour cookie, feed tile) apply only under `(hover: hover) and (pointer: fine)`; on touch they never stick. Reduced motion collapses everything to the static poster. Section order and field colours: hero brown, manifesto sand, flavours cream, bite terra, values chocolate, Instagram brown, footer chocolate.
+**Touch and pointer.** Nav links are at least 44px tall. Hover effects (pill, nav underline, flavour cookie, feed tile) apply only under `(hover: hover) and (pointer: fine)`; on touch they never stick. Reduced motion collapses everything to the static poster. Section order and field colours: hero brown, manifesto sand, flavours cream, bite terra, values chocolate, Instagram brown, footer chocolate. `html` is chocolate with `overscroll-behavior-y: none`.
+
+**Footer.** Classic footer on chocolate: a 3-column grid from 760px (1.5fr / 1fr / 1fr; stacked below) with brand block, "Explorar" links and "Pedidos" info, then a legal row, then the giant apricot wordmark cropped at the bottom edge.
 
 ## Elevation & Depth
 
-Depth is photographic, not structural. Cut-out cookies carry a soft two-layer drop shadow tinted chocolate (`drop-shadow(0 18px 22px rgb(29 10 6 / .32)) drop-shadow(0 4px 6px rgb(29 10 6 / .2))`); layering comes from z-stacking cookies over angled panels. Pills and feed tiles have a soft blurred shadow. No hard offset shadows.
+Depth is photographic, not structural. Cut-out cookies carry one soft drop shadow tinted chocolate (`--shadow-cookie: drop-shadow(0 16px 20px rgb(29 10 6 / .3))`); a single blur pass, because the former two-layer shadow dropped frames on scroll (measured with 4x CPU throttling). Flavour and bite cookie wrappers declare `will-change: transform`, which removed the remaining dropped frames. Only the flavour hover state keeps a deeper two-layer shadow. Layering comes from z-stacking cookies over angled panels. Pills and feed tiles have a soft blurred shadow. No hard offset shadows.
 
 ### Named Rules
 **The Shadow Belongs To Food Rule.** Shadows exist to make product and the few touchable things (pill, tile, seal) feel like objects; surfaces and fields are always flat. Shadow tint is the chocolate `rgb(29 10 6)`.
 
 ## Shapes
 
-Flat colour planes cut at about 8° (the slab clip-path rises 14vw across the viewport, since tan 8° ≈ 0.14); consecutive slabs overlap by that rise so the angles interlock. Rotations everywhere: hero panel -8°, cookies -16° to 18°, seal -12°, feed tiles -3° to 2°. Fully round pills (999px) and a circular seal. No borders; the only rounded rectangles are the Instagram feed tiles (18px).
+Flat colour planes cut at about 8° (the slab clip-path rises 14vw across the viewport, since tan 8° ≈ 0.14); consecutive slabs overlap by that rise so the angles interlock. Rotations everywhere: hero panel -8°, cookies -16° to 18°, seal -12°, feed tiles -3° to 2°. Fully round pills (999px), a circular seal and round 48px social buttons. No borders except one: the footer legal row has a 1px hairline top rule (cream at 22%). The only rounded rectangles are the Instagram feed tiles (18px).
 
 ## Components
 
@@ -229,16 +237,22 @@ Flat colour planes cut at about 8° (the slab clip-path rises 14vw across the vi
 Full-width angled slab per flavour in its own colour, with a 92vw (mobile) / 54vw (desktop) cookie cropped off the opposite edge. Focusable (`tabindex=0`); a tap on touch or pen plays an anime.js spring pop (scale and rotate, chosen by `pointerType`); hover (fine pointers only) and focus scale the cookie 1.07, rotates 4° and deepens its shadow (420ms). Choco dúo uses a hard sand/chocolate split (172° mobile, 100° desktop) instead of a flat colour.
 
 ### Seal
-Sand circle with chocolate ring and text on a circular path ("SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES"), Piccino/BAKERY in the centre, rotated -12°, spring-spun in.
+Sand circle with chocolate ring and text on a circular path ("SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES"), Piccino/BAKERY in the centre, rotated -12°, pops in with a CSS spring and spins with the hero scroll.
 
 ### Navigation
-Slim row in the hero on brown: sand wordmark (800, -0.02em) left, three 650-weight links right in cream; underline on hover (fine pointers only); every link has a 44px minimum touch height. No sticky bar, no mobile menu (links fit at 390px).
+Slim row in the hero on brown: sand wordmark (800, -0.02em) left, three 650-weight links right in cream (Sabores, La mordida, "Catálogo y precios", a placeholder whose " y precios" part shows from 520px); underline on hover (fine pointers only); every link has a 44px minimum touch height. No sticky bar, no mobile menu (links fit at 390px).
 
 ### Feed Tile
 Square tile in a flavour colour (sand, raspberry, cream, chocolate, pistachio, terracotta), 18px radius, cookie at 86%, staggered rotation; hover scale 1.04 (fine pointers only); a tap plays the spring pop. Illustrative only, labelled as an example account.
 
+### Footer Social Button
+Round 48px sand button with a 22px stroked chocolate icon; hover (fine pointers only) turns apricot and lifts 2px with a -4° tilt, press scales .94. Instagram is real; WhatsApp, TikTok and Facebook are placeholders (`data-placeholder`, no jump to top). Footer column links keep a 44px touch height; the legal row sits under a 1px cream-22% hairline.
+
+### Bite Section
+Frames swap instantly (opacity 0/1, no crossfade, which showed the whole cookie through the bite hole) with a short squash/nudge away from the bite (70ms out, spring back); the last bite shrinks and fades the cookie. Crumbs fall from each bite and re-place on resize.
+
 ### Motion
-anime.js. Entrance: `out(4)` timelines, spring settle (`bounce .28, 1150ms`) for thrown cookies, character stagger 38ms on the wordmark. CSS state transitions use `--ease-out` `cubic-bezier(0.16, 1, 0.3, 1)` at 220-420ms. Scroll-linked effects (hero parallax and seal spin, manifesto word reveal, flavour cookie settle, bite frames + crumbs) are driven by `onScroll`. Touch and pen taps on flavour cookies and feed tiles trigger a spring pop (`bounce .6, 560ms`). Content hidden for entrance is revealed after 2.5s if the script fails.
+Two layers. The hero entrance is pure CSS keyframes declared inside `prefers-reduced-motion: no-preference`: letters rise one by one (38ms stagger), cookies fly in on a spring easing built as CSS `linear()` (`--settle`, 1150ms) and the seal pops (`--pop`, 900ms); the `linear()` curves sit behind `@supports` with `--ease-out` as fallback. anime.js (skipped under reduced motion) keeps the scroll-linked work: hero parallax and seal spin, manifesto word reveal (words start at 0.62 opacity so contrast stays at least 3:1), flavour cookie settle, the bite section, and the tap pop. CSS state transitions use `--ease-out` `cubic-bezier(0.16, 1, 0.3, 1)` at 220-420ms. Touch and pen taps on flavour cookies and feed tiles trigger a spring pop (`bounce .6, 560ms`). Images ship as AVIF with WebP fallback in two widths (480 and original) through `<picture>`.
 
 ## Do's and Don'ts
 
@@ -251,7 +265,7 @@ anime.js. Entrance: `out(4)` timelines, spring settle (`bounce .28, 1150ms`) for
 - **Do** keep flavour colours tied to their flavour.
 
 ### Don't:
-- **Don't** draw borders, outlines or boxed cards around content; the feed tiles are the one rounded container.
+- **Don't** draw borders, outlines or boxed cards around content; the feed tiles are the one rounded container and the footer legal hairline is the one rule line.
 - **Don't** set terracotta text on a dark field (≈3.15:1), or apricot on light or terracotta fields (≈2.1:1).
 - **Don't** set sand text below large bold size on terracotta (≈3.9:1).
 - **Don't** add a second typeface or set display type at weights below 780.

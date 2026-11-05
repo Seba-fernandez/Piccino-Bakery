@@ -19,7 +19,8 @@ A branding landing for Piccino bakery, an artisan cookie brand. It exists as a p
 Cookies "simple, real, irresistible": big, chunky, artisanal cookies made with real ingredients and love. The page proves it through huge, detailed product imagery and tactile motion (cookies settling into place, a cookie being bitten as you scroll).
 
 ## Capabilities and Constraints
-- Not a store: no cart, prices, checkout, stock or ordering flow.
+- Not a store: no cart, prices, checkout, stock or ordering flow. The only commercial hook is a "Catálogo y precios" link (nav and footer) that is a placeholder with no destination yet; the real catalogue lives outside this page.
+- Footer social buttons: Instagram is real (@piccinobakery); WhatsApp, TikTok and Facebook are placeholders until the user provides the links.
 - Flavours (fixed list and order): red velvet, pistacho, marroc, choco duo (white + dark chocolate), frambuesa, clásica de chips.
 - Motion with anime.js v4 (4.5.0), precise and fine.
 - Language: Spanish (rioplatense, "vos").

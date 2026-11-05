@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T17:51:48.224402Z",
+  "generatedAt": "2026-11-05T20:27:54Z",
   "title": "Design System: Piccino bakery",
   "extensions": {
     "colorMeta": {
@@ -143,7 +143,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The Piccino wordmark in the hero; the footer wordmark uses the same voice in apricot. Footer wordmark: clamp 6rem / 33vw / 30rem."
+        "purpose": "The Piccino wordmark in the hero; the footer wordmark uses the same voice in apricot, cropped at the bottom. Footer wordmark: clamp 6rem / 33vw / 30rem."
       },
       "display-sub": {
         "displayName": "Display Sub",
@@ -183,7 +183,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Pill buttons."
+        "purpose": "Pill buttons and footer column headings (sentence case, no eyebrow)."
       },
       "nav": {
         "displayName": "Nav",
@@ -191,11 +191,11 @@
       },
       "brand": {
         "displayName": "Brand",
-        "purpose": "Nav wordmark; 1rem under 360px, 1.15rem otherwise."
+        "purpose": "Nav wordmark and footer logo; 1.15rem (nav drops to 1rem under 360px)."
       },
       "note": {
         "displayName": "Note",
-        "purpose": "Instagram handle line and footer credit."
+        "purpose": "Instagram handle line, footer column text and footer legal row."
       },
       "wordmark-note": {
         "displayName": "Wordmark Note",
@@ -213,13 +213,13 @@
     "shadows": [
       {
         "name": "shadow-cookie",
-        "value": "drop-shadow(0 18px 22px rgb(29 10 6 / 0.32)) drop-shadow(0 4px 6px rgb(29 10 6 / 0.2))",
-        "purpose": "Every cut-out cookie (filter, not box-shadow)."
+        "value": "drop-shadow(0 16px 20px rgb(29 10 6 / 0.3))",
+        "purpose": "Every cut-out cookie (filter, not box-shadow). One blur pass: the old two-layer shadow dropped frames on scroll. Wrappers declare will-change: transform."
       },
       {
         "name": "shadow-cookie-hover",
         "value": "drop-shadow(0 30px 32px rgb(29 10 6 / 0.36)) drop-shadow(0 6px 8px rgb(29 10 6 / 0.2))",
-        "purpose": "Flavour cookie on slab hover/focus."
+        "purpose": "Flavour cookie on slab hover/focus (fine pointers; still two-layer as built)."
       },
       {
         "name": "shadow-pill",
@@ -236,27 +236,37 @@
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "CSS state transitions, 220-420ms."
+        "purpose": "CSS state transitions, 220-420ms; also the hero keyframes and the fallback when linear() is unsupported."
       },
       {
         "name": "settle",
-        "value": "spring({ bounce: 0.28, duration: 1150 })",
-        "purpose": "anime.js: thrown-in cookies settling."
+        "value": "linear(0, 0.031, ... 1.083 ... 1)",
+        "purpose": "CSS: cookies fly in over 1150ms with a spring overshoot; defined in :root behind @supports (linear()) inside prefers-reduced-motion: no-preference."
       },
       {
-        "name": "seal-spin",
-        "value": "spring({ bounce: 0.45, duration: 900 })",
-        "purpose": "anime.js: seal entrance."
+        "name": "pop",
+        "value": "linear(0, 0.042, ... 1.203 ... 0.958 ... 1)",
+        "purpose": "CSS: seal pop (scale and rotate), 900ms after a 0.9s delay."
       },
       {
-        "name": "entrance",
-        "value": "out(4)",
-        "purpose": "anime.js timeline default; wordmark chars stagger(38)."
+        "name": "letter-in",
+        "value": "0.76s ease-out, delay 0.08s + 0.038s per letter",
+        "purpose": "CSS: wordmark letters rise one by one."
+      },
+      {
+        "name": "bite-nudge",
+        "value": "70ms out(2) then spring({ bounce: 0.4, duration: 460 })",
+        "purpose": "anime.js: squash/nudge of the bite cookie away from each bite; frames swap instantly."
       },
       {
         "name": "tap-pop",
         "value": "scale/rotate spring({ bounce: 0.6, duration: 560 })",
         "purpose": "anime.js: tap on flavour cookie or feed tile when pointerType is touch or pen."
+      },
+      {
+        "name": "word-reveal",
+        "value": "opacity 0.62 to 1, linear, stagger 60",
+        "purpose": "anime.js: manifesto words, scroll-synced; the 0.62 start keeps contrast at least 3:1."
       }
     ],
     "breakpoints": [
@@ -295,9 +305,9 @@
       "name": "Navigation",
       "kind": "nav",
       "refersTo": "nav",
-      "description": "Slim hero nav on brown: sand wordmark, three cream links.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\">Piccino</a><ul><li><a href=\"#\">Sabores</a></li><li><a href=\"#\">La mordida</a></li><li><a href=\"#\">Instagram</a></li></ul></nav>",
-      "css": ".ds-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--brown,#6e3019);color:var(--cream,#fff6ed);font-family:var(--font);font-weight:650}.ds-nav a{display:inline-flex;align-items:center;min-height:44px}.ds-nav ul{display:flex;gap:24px;margin:0;padding:0;list-style:none;font-size:clamp(.875rem,.75rem + .4vw,.95rem)}.ds-nav a{color:inherit;text-decoration:none}@media (hover:hover) and (pointer:fine){.ds-nav ul a:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:2px}}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:4px;border-radius:6px}.ds-nav-brand{color:var(--sand,#f3e3c6)!important;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}"
+      "description": "Slim hero nav on brown: sand wordmark, three cream links (third is the Catálogo y precios placeholder).",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\">Piccino</a><ul><li><a href=\"#\">Sabores</a></li><li><a href=\"#\">La mordida</a></li><li><a href=\"#\">Catálogo<span class=\"ds-more\">&nbsp;y precios</span></a></li></ul></nav>",
+      "css": ".ds-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--brown,#6e3019);color:var(--cream,#fff6ed);font-family:var(--font);font-weight:650}.ds-nav a{display:inline-flex;align-items:center;min-height:44px}.ds-nav ul{display:flex;gap:24px;margin:0;padding:0;list-style:none;font-size:clamp(.875rem,.75rem + .4vw,.95rem)}.ds-nav a{color:inherit;text-decoration:none}@media (hover:hover) and (pointer:fine){.ds-nav ul a:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:2px}}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:4px;border-radius:6px}.ds-nav-brand{color:var(--sand,#f3e3c6)!important;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}.ds-more{display:none}@media (min-width:520px){.ds-more{display:inline}}"
     },
     {
       "name": "Flavour Slab",
@@ -322,11 +332,19 @@
       "description": "Sand circular seal with text on a path; rotated -12deg.",
       "html": "<svg class=\"ds-seal\" viewBox=\"0 0 200 200\" role=\"img\" aria-label=\"Simple, real, irresistible\"><defs><path id=\"ds-sp\" d=\"M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0\"/></defs><circle cx=\"100\" cy=\"100\" r=\"98\" fill=\"#f3e3c6\"/><circle cx=\"100\" cy=\"100\" r=\"60\" fill=\"none\" stroke=\"#3b1c11\" stroke-width=\"1.5\"/><text><textPath href=\"#ds-sp\" textLength=\"488\">SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · </textPath></text><text class=\"ds-seal-name\" x=\"100\" y=\"104\" text-anchor=\"middle\">Piccino</text></svg>",
       "css": ".ds-seal{width:160px;rotate:-12deg;filter:drop-shadow(0 8px 14px rgb(29 10 6/.35))}.ds-seal text{fill:#3b1c11;font-family:var(--font);font-weight:700;font-size:14.5px;letter-spacing:.06em}.ds-seal .ds-seal-name{font-size:25px;font-weight:800;letter-spacing:-.02em}"
+    },
+    {
+      "name": "Footer Social Button",
+      "kind": "button",
+      "refersTo": "social-button",
+      "description": "Round 48px sand button with stroked icon; used in the footer brand block.",
+      "html": "<a class=\"ds-social\" href=\"#\" aria-label=\"Instagram\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><circle cx=\"17.3\" cy=\"6.7\" r=\"1.2\" fill=\"currentColor\"/></svg></a>",
+      "css": ".ds-social{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--sand,#f3e3c6);color:var(--choco,#3b1c11);transition:transform 220ms cubic-bezier(.16,1,.3,1),background-color 220ms cubic-bezier(.16,1,.3,1)}.ds-social:active{transform:scale(.94);transition-duration:90ms}@media (hover:hover) and (pointer:fine){.ds-social:hover{background:var(--apricot,#e8966a);transform:translateY(-2px) rotate(-4deg)}}.ds-social:focus-visible{outline:3px solid currentColor;outline-offset:4px}"
     }
   ],
   "narrative": {
     "northStar": "The Pop Cookie Poster",
-    "overview": "Every section is a drenched field of warm bakery colour (chocolate-brown, terracotta, sand, cream), and a cut-out cookie photograph, larger than any word on screen, bleeds off its edge. The palette is taken from the brand's real Instagram, so it reads as baked goods and packaging rather than poster primaries. Type is one heavy variable grotesque set tight and huge; colour does the structuring, never lines or boxes. Panels are angled, cookies are tilted, nothing sits square.\n\nMotion is physical: cookies are thrown in and settle on a spring, a classic gets bitten frame by frame as you scroll and drops real crumbs, the seal spins in. Everything resolves to a complete static poster under `prefers-reduced-motion`.",
+    "overview": "Every section is a drenched field of warm bakery colour (chocolate-brown, terracotta, sand, cream), and a cut-out cookie photograph, larger than any word on screen, bleeds off its edge. The palette is taken from the brand's real Instagram, so it reads as baked goods and packaging rather than poster primaries. Type is one heavy variable grotesque set tight and huge; colour does the structuring, never lines or boxes. Panels are angled, cookies are tilted, nothing sits square.\n\nMotion is physical: cookies are thrown in and settle on a spring, letters rise one by one, a classic gets bitten frame by frame as you scroll and drops real crumbs, the seal pops in. Everything resolves to a complete static poster under `prefers-reduced-motion`.",
     "keyCharacteristics": [
       "Full-bleed colour fields, one per section, edge to edge.",
       "Product cut-outs at 55-104vw, rotated (-16° to 18°), cropped by the viewport.",
@@ -374,7 +392,7 @@
       "**Do** keep flavour colours tied to their flavour."
     ],
     "donts": [
-      "**Don't** draw borders, outlines or boxed cards around content; the feed tiles are the one rounded container.",
+      "**Don't** draw borders, outlines or boxed cards around content; the feed tiles are the one rounded container and the footer legal hairline is the one rule line.",
       "**Don't** set terracotta text on a dark field (≈3.15:1), or apricot on light or terracotta fields (≈2.1:1).",
       "**Don't** set sand text below large bold size on terracotta (≈3.9:1).",
       "**Don't** add a second typeface or set display type at weights below 780.",

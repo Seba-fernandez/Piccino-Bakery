@@ -257,10 +257,11 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
 
 /* ───── Entrada del hero en CSS puro: arranca en el primer cuadro, sin esperar al JavaScript (mejora LCP y Speed Index) ───── */
 @media (prefers-reduced-motion: no-preference) {
-  :root {
+  /* Sólo si el navegador entiende linear(): en Safari < 17.2 las variables no existen y entra el var(--ease-out) de respaldo. */
+  @supports (animation-timing-function: linear(0, 1)) { :root {
     --settle: linear(0, 0.031, 0.111, 0.221, 0.346, 0.475, 0.599, 0.712, 0.81, 0.893, 0.958, 1.008, 1.043, 1.066, 1.079, 1.083, 1.082, 1.076, 1.067, 1.056, 1.046, 1.035, 1.026, 1.017, 1.01, 1.004, 1, 0.997, 0.995, 0.994, 0.993, 0.993, 0.994, 0.994, 0.995, 0.996, 1);
     --pop: linear(0, 0.042, 0.152, 0.304, 0.476, 0.649, 0.809, 0.946, 1.054, 1.132, 1.18, 1.203, 1.203, 1.187, 1.16, 1.126, 1.09, 1.056, 1.025, 1, 0.98, 0.967, 0.96, 0.958, 0.96, 0.964, 0.97, 0.978, 0.985, 0.992, 0.998, 1.002, 1.005, 1.008, 1.009, 1.009, 1);
-  }
+  } }
   @keyframes fly-in { from { opacity: 0; transform: translate(var(--fx), var(--fy)) rotate(var(--fr)); } to { opacity: 1; transform: none; } }
   @keyframes slide-in { from { opacity: 0; transform: translateX(45vw); } to { opacity: 1; transform: none; } }
   @keyframes letter-in { from { opacity: 0; transform: translateY(70%) rotate(8deg); } to { opacity: 1; transform: none; } }
