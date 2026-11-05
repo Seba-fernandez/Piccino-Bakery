@@ -11,3 +11,4 @@ Todas las fotos de producto son **sintéticas**: generadas con IA en Figma (mode
 | frambuesa.webp | Cookie de frambuesa y chocolate blanco | sí |
 | clasica.webp | Clásica de chips entera (usada en "La mordida") | sí, idealmente vista desde arriba |
 | crumbs/c1–c12.webp | Migas separadas de una sola imagen generada | opcional |
+| clasica-bite-1..3.webp | La misma clásica con 1, 2 y 3 mordiscos: contorno irregular hecho por script sobre la foto IA | sí, junto con la clásica |

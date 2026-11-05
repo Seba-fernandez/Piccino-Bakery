@@ -22,6 +22,6 @@ STORY: The visitor meets Piccino through scale and appetite, sees six flavours w
 
 FIRST VIEWPORT: Cobalt ground. "Piccino" in butter at ~28vw bleeds off the right edge, with "bakery" under it. A bitten red velvet at ~70vw is cropped bottom-left and tilted -14°. Pistacho is cropped top-right and chips bottom-right. A tomato panel at -8° sits behind them, with the seal on its corner. The line "Dale amor a tus meriendas." and a butter pill "Conocé los sabores" sit bottom-left above the fold. Slim nav: wordmark plus Sabores, La mordida, Instagram.
 
-FORM: Pop food poster translated to scroll. Position 1 on the list, user-pinned (palette and poster reference). seed: none (unavailable)
+FORM: Pop food poster translated to scroll; user-pinned direction (palette "Tomate y cobalto" chosen by the user plus their poster reference), so the concept roll was intentionally skipped as the skill allows for pinned briefs. seed: none (unavailable)
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

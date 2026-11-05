@@ -70,54 +70,60 @@ function saboresSettle() {
   });
 }
 
-/* La mordida: el scroll muerde la clásica; cada mordisco tira migas que caen debajo. */
+/* La mordida: el scroll muerde la clásica; cada mordisco cambia de fotograma y tira migas que caen debajo. */
 function bite() {
   const section = $('[data-bite-section]');
   const stage = $('.mordida__stage', section);
   const cookie = $('[data-bite-cookie]', section);
-  const bites = $$('.bite', section);
+  const frames = $$('[data-frame]', section);
   const crumbs = $$('[data-crumb]', section);
   const steps = $$('.mordida__step', section);
   const remate = $('[data-remate]', section);
+  // Centro de cada mordisco en la foto (0–1), igual que en el generador de fotogramas; el último es "se la comió toda".
+  const centers = [[0.9, 0.24], [0.08, 0.42], [0.68, 0.94], [0.5, 0.5]];
   const thresholds = [0.14, 0.34, 0.54, 0.78];
+  const total = centers.length;
   let count = 0;
 
-  const biteCenter = (i) => {
-    const c = bites[i].querySelector('circle');
+  const showFrame = (n) => frames.forEach((f, k) => { f.style.opacity = k === Math.min(n, frames.length - 1) ? '1' : '0'; });
+
+  const burst = (i) => {
+    // shortcut: las migas se ubican en px al momento del mordisco; si cambia el tamaño de ventana quedan corridas hasta el próximo mordisco.
     const r = cookie.getBoundingClientRect();
     const s = stage.getBoundingClientRect();
-    return {
-      x: r.left - s.left + (c.cx.baseVal.value / 100) * r.width,
-      y: r.top - s.top + (c.cy.baseVal.value / 100) * r.height,
-      floor: r.bottom - s.top,
-      w: r.width,
-    };
-  };
-
-  const biteIn = (i) => {
-    const last = i === bites.length - 1;
-    animate(bites[i], { scale: [last ? 0 : 0.5, 1], duration: last ? 420 : 200, ease: 'out(3)' });
-    animate(cookie, { rotate: [i % 2 ? 5 : -5, 0], scale: [0.95, 1], ease: spring({ bounce: 0.55, duration: 520 }) });
-    // shortcut: las migas se ubican en px al momento del mordisco; si cambia el tamaño de ventana quedan corridas hasta el próximo mordisco.
-    const o = biteCenter(i);
+    const last = i === total - 1;
+    const x0 = r.left - s.left + centers[i][0] * r.width;
+    const y0 = r.top - s.top + centers[i][1] * r.height;
+    const floor = r.bottom - s.top;
     crumbs.slice(i * 3, i * 3 + 3).forEach((crumb) => {
-      const spread = last ? o.w * 0.45 : o.w * 0.18;
-      const sx = last ? o.x + utils.random(-o.w / 3, o.w / 3) : o.x;
-      const sy = last ? o.y + utils.random(-o.w / 3, o.w / 3) : o.y;
+      const spread = r.width * (last ? 0.45 : 0.18);
+      const sx = last ? x0 + utils.random(-r.width / 3, r.width / 3) : x0;
+      const sy = last ? y0 + utils.random(-r.width / 3, r.width / 3) : y0;
       animate(crumb, {
         opacity: { to: 1, duration: 60 },
         x: { from: sx, to: sx + utils.random(-spread, spread), ease: 'out(2)', duration: 900 },
         y: [
           { from: sy, to: sy - utils.random(30, 90), ease: 'out(2)', duration: 260 },
-          { to: o.floor - utils.random(-10, 40), ease: 'in(2)', duration: 520 },
+          { to: floor - utils.random(-10, 40), ease: 'in(2)', duration: 520 },
         ],
         rotate: { from: 0, to: utils.random(-260, 260), duration: 900 },
       });
     });
   };
 
+  const biteIn = (i) => {
+    if (i === total - 1) {
+      animate(cookie, { scale: [1, 0.35], opacity: [1, 0], duration: 360, ease: 'in(2)' });
+    } else {
+      showFrame(i + 1);
+      animate(cookie, { rotate: [i % 2 ? 5 : -5, 0], scale: [0.95, 1], ease: spring({ bounce: 0.55, duration: 520 }) });
+    }
+    burst(i);
+  };
+
   const biteOut = (i) => {
-    animate(bites[i], { scale: 0, duration: 180, ease: 'in(2)' });
+    if (i === total - 1) animate(cookie, { scale: 1, opacity: 1, duration: 300, ease: 'out(3)' });
+    else showFrame(i);
     animate(crumbs.slice(i * 3, i * 3 + 3), { opacity: 0, duration: 200 });
   };
 
@@ -125,7 +131,7 @@ function bite() {
     while (count < n) biteIn(count++);
     while (count > n) biteOut(--count);
     steps.forEach((s) => s.classList.toggle('is-on', +s.dataset.step === n));
-    remate.classList.toggle('is-on', n === bites.length);
+    remate.classList.toggle('is-on', n === total);
   };
 
   onScroll({

@@ -8,21 +8,6 @@ const img = (id: string) => `${base}img/${id}.webp`;
 const sabores = copy.sabores;
 const clasica = sabores.find((s) => s.id === 'clasica')!;
 
-// Mordiscos sobre la clásica (viewBox 0 0 100 100): centro sobre el borde, radio y ángulo hacia adentro.
-const bites = [
-  { cx: 88, cy: 26, r: 17 },
-  { cx: 10, cy: 40, r: 19 },
-  { cx: 70, cy: 92, r: 22 },
-  { cx: 50, cy: 50, r: 62 },
-];
-// Marcas de dientes: círculos chicos sobre el borde interno del mordisco.
-const teeth = (b: { cx: number; cy: number; r: number }) => {
-  const toCenter = Math.atan2(50 - b.cy, 50 - b.cx);
-  return Array.from({ length: 9 }, (_, i) => {
-    const a = toCenter + ((i - 4) / 4) * 1.15;
-    return { cx: b.cx + Math.cos(a) * (b.r + 0.6), cy: b.cy + Math.sin(a) * (b.r + 0.6), r: b.r * 0.16 };
-  });
-};
 const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
 ---
 <!doctype html>
@@ -61,9 +46,8 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
       <div class="hero__copy" id="top">
         <h1 class="wordmark" data-enter="wordmark">
           <span class="wordmark__big">Piccino</span>
-          <span class="wordmark__small">bakery</span>
+          <span class="wordmark__small">bakery <span class="wordmark__note">cookies artesanales</span></span>
         </h1>
-        <p class="hero__tag" data-enter="tag">Cookies artesanales</p>
         <p class="hero__line" data-enter="tag">Dale amor a tus meriendas.</p>
         <a class="pill pill--butter" href="#sabores" data-enter="tag">
           {copy.hero.cta}
@@ -98,7 +82,7 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
           {sabores.map((s, i) => (
             <li class={`sabor sabor--${s.id}`} data-sabor tabindex="0">
               <div class="sabor__slab" aria-hidden="true"></div>
-              <div class="sabor__cookie" data-settle={i % 2 ? '1' : '-1'}><img class="sabor__img" src={img(s.id)} alt={s.alt} width="840" height="760" loading="lazy" /></div>
+              <div class="sabor__cookie" data-settle={i % 2 ? '-1' : '1'}><img class="sabor__img" src={img(s.id)} alt={s.alt} width="840" height="760" loading="lazy" /></div>
               <div class="sabor__text">
                 <h3>{s.nombre}</h3>
                 <p>{s.linea}</p>
@@ -112,20 +96,8 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
         <div class="mordida__stage">
           <h2 id="mordida-titulo" class="visually-hidden">La mordida</h2>
           <div class="mordida__cookie" data-bite-cookie>
-            <svg viewBox="0 0 100 100" role="img" aria-label={clasica.alt}>
-              <defs>
-                <mask id="bite-mask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="140" height="140">
-                  <rect x="-20" y="-20" width="140" height="140" fill="#fff" />
-                  {bites.map((b, i) => (
-                    <g class="bite" data-bite={i} style={`transform-origin:${b.cx}px ${b.cy}px`}>
-                      <circle cx={b.cx} cy={b.cy} r={b.r} fill="#000" />
-                      {i < 3 && teeth(b).map((t) => <circle cx={t.cx.toFixed(2)} cy={t.cy.toFixed(2)} r={t.r.toFixed(2)} fill="#000" />)}
-                    </g>
-                  ))}
-                </mask>
-              </defs>
-              <image href={img('clasica')} x="1" y="0" width="98" height="100" mask="url(#bite-mask)" />
-            </svg>
+            <img data-frame="0" src={img('clasica')} alt={clasica.alt} width="778" height="800" loading="lazy" />
+            {[1, 2, 3].map((n) => <img data-frame={n} src={img(`clasica-bite-${n}`)} alt="" width="778" height="800" loading="lazy" />)}
           </div>
           {Array.from({ length: 12 }, (_, i) => (
             <img class="crumb" data-crumb src={`${base}img/crumbs/c${i + 1}.webp`} alt="" loading="lazy" />
