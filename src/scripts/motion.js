@@ -11,7 +11,7 @@ if (!reduce) {
   manifesto();
   saboresSettle();
   bite();
-  if (matchMedia('(hover: none)').matches) tapPop();
+  tapPop();
 }
 
 /* Hero: las cookies entran desde fuera de pantalla y se acomodan con peso. */
@@ -77,11 +77,13 @@ function tapPop() {
     scale: [{ to: big, duration: 130, ease: 'out(3)' }, { to: 1, ease: spring({ bounce: 0.6, duration: 560 }) }],
     rotate: [{ to: dir * 5, duration: 130, ease: 'out(3)' }, { to: 0, ease: spring({ bounce: 0.6, duration: 560 }) }],
   });
+  // Por tipo de puntero y no por tipo de equipo: una notebook táctil usa hover con el mouse y pop con el dedo.
+  const touched = (e) => e.pointerType === 'touch' || e.pointerType === 'pen';
   $$('[data-sabor]').forEach((card) => {
     const img = $('.sabor__img', card), dir = +$('[data-settle]', card).dataset.settle;
-    card.addEventListener('click', () => pop(img, -dir, 1.1));
+    card.addEventListener('click', (e) => touched(e) && pop(img, -dir, 1.1));
   });
-  $$('.post').forEach((post, i) => post.addEventListener('click', () => pop(post, i % 2 ? 1 : -1, 1.08)));
+  $$('.post').forEach((post, i) => post.addEventListener('click', (e) => touched(e) && pop(post, i % 2 ? 1 : -1, 1.08)));
 }
 
 /* La mordida: el scroll muerde la clásica; cada mordisco cambia de fotograma y tira migas que caen debajo. */

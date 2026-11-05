@@ -111,7 +111,7 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
   .hero__copy { padding-top: 0; }
   .wordmark__big { font-size: min(21vw, 31svh); line-height: 0.8; }
   .wordmark__small { font-size: min(10vw, 15svh); }
-  .wordmark__note { font-size: 0.9rem; margin-top: 0.5em; }
+  .wordmark__note { font-size: 0.95rem; margin-top: 0.5em; }
   .hero__line { margin-top: 0.5rem; max-width: none; font-size: clamp(1.15rem, 4.8svh, 1.5rem); }
   .hero__copy .pill { margin-top: 0.5rem; }
   .hero__panel { inset: -10% -12% -20% 58%; height: auto; transform-origin: 50% 50%; }
