@@ -11,6 +11,7 @@ if (!reduce) {
   manifesto();
   saboresSettle();
   bite();
+  if (matchMedia('(hover: none)').matches) tapPop();
 }
 
 /* Hero: las cookies entran desde fuera de pantalla y se acomodan con peso. */
@@ -70,6 +71,19 @@ function saboresSettle() {
   });
 }
 
+/* Tacto: sin hover no hay micro-zoom, así que un toque en una cookie o ficha la hace "saltar" con resorte. */
+function tapPop() {
+  const pop = (el, dir, big) => animate(el, {
+    scale: [{ to: big, duration: 130, ease: 'out(3)' }, { to: 1, ease: spring({ bounce: 0.6, duration: 560 }) }],
+    rotate: [{ to: dir * 5, duration: 130, ease: 'out(3)' }, { to: 0, ease: spring({ bounce: 0.6, duration: 560 }) }],
+  });
+  $$('[data-sabor]').forEach((card) => {
+    const img = $('.sabor__img', card), dir = +$('[data-settle]', card).dataset.settle;
+    card.addEventListener('click', () => pop(img, -dir, 1.1));
+  });
+  $$('.post').forEach((post, i) => post.addEventListener('click', () => pop(post, i % 2 ? 1 : -1, 1.08)));
+}
+
 /* La mordida: el scroll muerde la clásica; cada mordisco cambia de fotograma y tira migas que caen debajo. */
 function bite() {
   const section = $('[data-bite-section]');
@@ -87,24 +101,34 @@ function bite() {
 
   const showFrame = (n) => frames.forEach((f, k) => { f.style.opacity = k === Math.min(n, frames.length - 1) ? '1' : '0'; });
 
+  // Medidas de layout (no cambian con rotate/scale de la animación). Las migas guardan dónde cayeron como
+  // fracción de la cookie, para reubicarlas si cambia el tamaño (rotar el celular, redimensionar la ventana).
+  const landed = new Map();
+  const box = () => ({ x: cookie.offsetLeft, y: cookie.offsetTop, w: cookie.offsetWidth, h: cookie.offsetHeight });
+  const placeCrumb = (crumb) => {
+    const f = landed.get(crumb), r = box();
+    utils.set(crumb, { x: r.x + f.fx * r.w, y: r.y + f.fy * r.w });
+  };
+
   const burst = (i) => {
-    // shortcut: las migas se ubican en px al momento del mordisco; si cambia el tamaño de ventana quedan corridas hasta el próximo mordisco.
-    const r = cookie.getBoundingClientRect();
-    const s = stage.getBoundingClientRect();
+    const r = box();
     const last = i === total - 1;
-    const x0 = r.left - s.left + centers[i][0] * r.width;
-    const y0 = r.top - s.top + centers[i][1] * r.height;
-    const floor = r.bottom - s.top;
+    const x0 = r.x + centers[i][0] * r.w;
+    const y0 = r.y + centers[i][1] * r.h;
+    const floor = r.y + r.h;
     crumbs.slice(i * 3, i * 3 + 3).forEach((crumb) => {
-      const spread = r.width * (last ? 0.45 : 0.18);
-      const sx = last ? x0 + utils.random(-r.width / 3, r.width / 3) : x0;
-      const sy = last ? y0 + utils.random(-r.width / 3, r.width / 3) : y0;
+      const spread = r.w * (last ? 0.45 : 0.18);
+      const sx = last ? x0 + utils.random(-r.w / 3, r.w / 3) : x0;
+      const sy = last ? y0 + utils.random(-r.w / 3, r.w / 3) : y0;
+      const tx = sx + utils.random(-spread, spread);
+      const ty = floor - utils.random(-10, 40);
+      landed.set(crumb, { fx: (tx - r.x) / r.w, fy: (ty - r.y) / r.w });
       animate(crumb, {
         opacity: { to: 1, duration: 60 },
-        x: { from: sx, to: sx + utils.random(-spread, spread), ease: 'out(2)', duration: 900 },
+        x: { from: sx, to: tx, ease: 'out(2)', duration: 900 },
         y: [
           { from: sy, to: sy - utils.random(30, 90), ease: 'out(2)', duration: 260 },
-          { to: floor - utils.random(-10, 40), ease: 'in(2)', duration: 520 },
+          { to: ty, ease: 'in(2)', duration: 520 },
         ],
         rotate: { from: 0, to: utils.random(-260, 260), duration: 900 },
       });
@@ -133,6 +157,12 @@ function bite() {
     steps.forEach((s) => s.classList.toggle('is-on', +s.dataset.step === n));
     remate.classList.toggle('is-on', n === total);
   };
+
+  let raf = 0;
+  addEventListener('resize', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => crumbs.slice(0, count * 3).forEach((c) => landed.has(c) && placeCrumb(c)));
+  });
 
   onScroll({
     target: section, enter: 'top top', leave: 'bottom bottom',

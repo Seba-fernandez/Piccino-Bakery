@@ -80,7 +80,7 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
         <h2 id="sabores-titulo" class="sabores__title">{copy.sabores_titulo}</h2>
         <ul class="sabores__grid">
           {sabores.map((s, i) => (
-            <li class={`sabor sabor--${s.id}`} data-sabor tabindex="0">
+            <li class={`sabor sabor--${s.id}`} data-sabor>
               <div class="sabor__slab" aria-hidden="true"></div>
               <div class="sabor__cookie" data-settle={i % 2 ? '-1' : '1'}><img class="sabor__img" src={img(s.id)} alt={s.alt} width="840" height="760" loading="lazy" /></div>
               <div class="sabor__text">
