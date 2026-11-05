@@ -1,35 +1,21 @@
-import { animate, createTimeline, onScroll, spring, stagger, splitText, utils } from 'animejs';
+import { animate, onScroll, spring, stagger, splitText, utils } from 'animejs';
 
 window.__piccino = true;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+// Enlaces todavía sin destino (catálogo, redes pendientes): no saltan al tope de la página al tocarlos.
+document.addEventListener('click', (e) => { if (e.target.closest('[data-placeholder]')) e.preventDefault(); });
+
 if (!reduce) {
-  heroEntrance();
+  // La entrada del hero es CSS puro (global.css): arranca en el primer cuadro sin esperar a este archivo.
   heroScroll();
   manifesto();
   saboresSettle();
   bite();
   tapPop();
-}
-
-/* Hero: las cookies entran desde fuera de pantalla y se acomodan con peso. */
-function heroEntrance() {
-  const chars = splitText('.wordmark__big', { chars: { wrap: 'clip' } }).chars;
-  const settle = spring({ bounce: 0.28, duration: 1150 });
-  const [rv, pi, ma] = $$('.hero__cookie');
-
-  createTimeline({ defaults: { ease: 'out(4)' } })
-    .add('.hero__panel', { opacity: { to: 1, duration: 200 }, x: { from: '45vw' }, duration: 900 }, 0)
-    .add('.wordmark', { opacity: { to: 1, duration: 1 } }, 80)
-    .add(chars, { y: { from: '105%' }, rotate: { from: 8 }, duration: 760, delay: stagger(38) }, 80)
-    .add('.wordmark__small', { y: { from: '0.5em' }, opacity: { from: 0 }, duration: 600 }, 380)
-    .add(rv, { opacity: { to: 1, duration: 120 }, x: { from: '-70vw' }, y: { from: '35vh' }, rotate: { from: -70 }, ease: settle }, 260)
-    .add(pi, { opacity: { to: 1, duration: 120 }, x: { from: '60vw' }, y: { from: '-45vh' }, rotate: { from: 80 }, ease: settle }, 400)
-    .add(ma, { opacity: { to: 1, duration: 120 }, x: { from: '55vw' }, y: { from: '45vh' }, rotate: { from: -55 }, ease: settle }, 520)
-    .add('.seal', { opacity: { to: 1, duration: 150 }, scale: { from: 0.2 }, rotate: { from: -120 }, ease: spring({ bounce: 0.45, duration: 900 }) }, 900)
-    .add($$('.hero__copy [data-enter="tag"]'), { opacity: { to: 1 }, y: { from: 18 }, duration: 650, delay: stagger(90) }, 820);
+  warmBite();
 }
 
 /* Al bajar, cada cookie del hero se va a su propia velocidad y el sello gira con el scroll. */
@@ -50,7 +36,7 @@ function heroScroll() {
 function manifesto() {
   const words = splitText('[data-split]', { words: true }).words;
   animate(words, {
-    opacity: [0.16, 1], ease: 'linear', delay: stagger(60),
+    opacity: [0.5, 1], ease: 'linear', delay: stagger(60),
     autoplay: onScroll({ target: '[data-split]', enter: '85% top', leave: '45% bottom', sync: 0.25 }),
   });
   animate('[data-cross]', {
@@ -69,6 +55,12 @@ function saboresSettle() {
       autoplay: onScroll({ target: el.closest('[data-sabor]'), enter: 'bottom top', leave: '55% top', sync: 0.35 }),
     });
   });
+}
+
+/* Precarga en reposo los fotogramas de la mordida y las migas (son lazy): así el cambio de foto nunca llega a un hueco sin cargar. */
+function warmBite() {
+  const warm = () => $$('[data-frame], [data-crumb]').forEach((i) => { i.loading = 'eager'; i.decode?.().catch(() => {}); });
+  (window.requestIdleCallback || ((f) => setTimeout(f, 1500)))(warm, { timeout: 4000 });
 }
 
 /* Tacto: sin hover no hay micro-zoom, así que un toque en una cookie o ficha la hace "saltar" con resorte. */
@@ -141,8 +133,17 @@ function bite() {
     if (i === total - 1) {
       animate(cookie, { scale: [1, 0.35], opacity: [1, 0], duration: 360, ease: 'in(2)' });
     } else {
+      // Cambio instantáneo de foto (sin fundido: un fundido deja ver la cookie entera a través del hueco) y un
+      // golpe de achatamiento que se aleja del mordisco, como si te tiraran de la cookie al morderla.
       showFrame(i + 1);
-      animate(cookie, { rotate: [i % 2 ? 5 : -5, 0], scale: [0.95, 1], ease: spring({ bounce: 0.55, duration: 520 }) });
+      const dx = (0.5 - centers[i][0]) * 18, dy = (0.5 - centers[i][1]) * 18;
+      const back = spring({ bounce: 0.4, duration: 460 });
+      animate(cookie, {
+        x: [{ to: dx, duration: 70, ease: 'out(2)' }, { to: 0, ease: back }],
+        y: [{ to: dy, duration: 70, ease: 'out(2)' }, { to: 0, ease: back }],
+        scale: [{ to: 0.96, duration: 70, ease: 'out(2)' }, { to: 1, ease: back }],
+        rotate: [{ to: dx * 0.12, duration: 70, ease: 'out(2)' }, { to: 0, ease: back }],
+      });
     }
     burst(i);
   };

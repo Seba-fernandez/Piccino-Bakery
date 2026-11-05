@@ -16,7 +16,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-color: var(--choco) var(--cream); }
+html { scroll-behavior: smooth; scrollbar-color: var(--choco) var(--cream); background: var(--choco); overscroll-behavior-y: none; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0;
@@ -140,7 +140,7 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
 }
 
 /* ───── SABORES ───── */
-.sabores { --rise: 14vw; overflow: clip; background: var(--cream); padding: clamp(80px, 12vh, 140px) 0 48px; }
+.sabores { --rise: 14vw; overflow-x: clip; background: var(--cream); padding: clamp(80px, 12vh, 140px) 0 0; }
 .sabores__title {
   font-size: clamp(3rem, 1.6rem + 7vw, 8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.88;
   color: var(--brown); max-width: 9ch; margin: 0 var(--gutter) clamp(24px, 4vh, 48px);
@@ -184,14 +184,16 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
 }
 
 /* ───── LA MORDIDA ───── */
-.mordida { position: relative; height: 420svh; background: var(--terra); color: var(--cream); }
+.mordida { --rise: 14vw; position: relative; height: 420svh; background: var(--terra); color: var(--cream); }
+/* Rellena la cuña crema que deja el último panel inclinado (mismo ángulo que las bandas); queda sólo una línea fina de 10px. */
+.mordida::before { content: ''; position: absolute; z-index: 1; left: 0; right: 0; top: calc(var(--rise) * -1 + 10px); height: var(--rise); background: var(--terra); clip-path: polygon(0 0, 100% 100%, 0 100%); pointer-events: none; }
 .mordida__stage {
-  position: sticky; top: 0; height: 100svh; overflow: clip;
+  position: sticky; top: 0; height: 100svh; height: 100dvh; overflow: clip;
   display: grid; grid-template-rows: 1fr auto; justify-items: center; align-items: center;
   padding-bottom: clamp(28px, 6vh, 64px);
 }
 .mordida__cookie { position: relative; width: min(86vw, 60svh, 620px); aspect-ratio: 778 / 800; will-change: transform; }
-.mordida__cookie img { position: absolute; inset: 0; width: 100%; height: 100%; filter: var(--shadow-cookie); transition: opacity 90ms linear; }
+.mordida__cookie img { position: absolute; inset: 0; width: 100%; height: 100%; filter: var(--shadow-cookie); }
 .mordida__cookie img:not([data-frame="0"]) { opacity: 0; }
 .crumb { position: absolute; left: 0; top: 0; width: clamp(18px, 3.2vw, 34px); opacity: 0; pointer-events: none; filter: drop-shadow(0 4px 4px rgb(29 10 6 / 0.3)); }
 .mordida__words {
@@ -233,13 +235,49 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
 .insta__note { margin-top: 1rem; font-size: 0.95rem; opacity: 0.9; }
 
 /* ───── FOOTER ───── */
-.footer { background: var(--choco); color: var(--cream); padding: clamp(64px, 10vh, 110px) var(--gutter) 0; overflow: clip; }
-.footer__line { font-size: clamp(1.4rem, 1rem + 1.6vw, 2.2rem); font-weight: 700; max-width: 22ch; line-height: 1.1; }
-.footer__credit { margin-top: 1rem; font-size: 0.95rem; }
+.footer { background: var(--choco); color: var(--cream); padding: clamp(56px, 9vh, 96px) var(--gutter) 0; overflow: clip; }
+.footer__grid { display: grid; gap: clamp(36px, 6vw, 56px); }
+.footer__logo { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--sand); }
+.footer__logo span { font-weight: 650; }
+.footer__line { margin-top: 0.8rem; font-size: clamp(1.4rem, 1rem + 1.6vw, 2.2rem); font-weight: 700; max-width: 22ch; line-height: 1.1; }
+.footer__social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.4rem; }
+.social { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--sand); color: var(--choco); transition: transform 220ms var(--ease-out), background-color 220ms var(--ease-out); }
+.social:active { transform: scale(0.94); transition-duration: 90ms; }
+@media (hover: hover) and (pointer: fine) { .social:hover { background: var(--apricot); transform: translateY(-2px) rotate(-4deg); } }
+.footer__col h2 { font-size: 1.05rem; font-weight: 750; color: var(--sand); margin-bottom: 0.4rem; }
+.footer__col p { margin-top: 0.4rem; font-size: 0.95rem; max-width: 30ch; }
+.footer__col li a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { .footer__col li a:hover { text-decoration: underline; } }
+.footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; margin-top: clamp(40px, 6vw, 64px); padding-top: 20px; border-top: 1px solid rgb(255 246 237 / 0.22); font-size: 0.95rem; }
+@media (min-width: 760px) { .footer__grid { grid-template-columns: 1.5fr 1fr 1fr; } }
+.nav__more { display: none; }
+@media (min-width: 520px) { .nav__more { display: inline; } }
 .footer__word { color: var(--apricot); font-weight: 800; font-size: clamp(6rem, 33vw, 30rem); letter-spacing: -0.04em; line-height: 0.72; margin-top: 4vh; margin-bottom: -0.06em; white-space: nowrap; }
 
-/* ───── Estados iniciales de animación (sólo con la clase .motion) ───── */
-.motion [data-enter] { opacity: 0; }
+/* ───── Entrada del hero en CSS puro: arranca en el primer cuadro, sin esperar al JavaScript (mejora LCP y Speed Index) ───── */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --settle: linear(0, 0.031, 0.111, 0.221, 0.346, 0.475, 0.599, 0.712, 0.81, 0.893, 0.958, 1.008, 1.043, 1.066, 1.079, 1.083, 1.082, 1.076, 1.067, 1.056, 1.046, 1.035, 1.026, 1.017, 1.01, 1.004, 1, 0.997, 0.995, 0.994, 0.993, 0.993, 0.994, 0.994, 0.995, 0.996, 1);
+    --pop: linear(0, 0.042, 0.152, 0.304, 0.476, 0.649, 0.809, 0.946, 1.054, 1.132, 1.18, 1.203, 1.203, 1.187, 1.16, 1.126, 1.09, 1.056, 1.025, 1, 0.98, 0.967, 0.96, 0.958, 0.96, 0.964, 0.97, 0.978, 0.985, 0.992, 0.998, 1.002, 1.005, 1.008, 1.009, 1.009, 1);
+  }
+  @keyframes fly-in { from { opacity: 0; transform: translate(var(--fx), var(--fy)) rotate(var(--fr)); } to { opacity: 1; transform: none; } }
+  @keyframes slide-in { from { opacity: 0; transform: translateX(45vw); } to { opacity: 1; transform: none; } }
+  @keyframes letter-in { from { opacity: 0; transform: translateY(70%) rotate(8deg); } to { opacity: 1; transform: none; } }
+  @keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes seal-in { from { opacity: 0; transform: scale(0.2) rotate(-120deg); } to { opacity: 1; transform: none; } }
+
+  .hero__panel { animation: slide-in 0.9s var(--ease-out) both; }
+  .wordmark .ch { display: inline-block; animation: letter-in 0.76s var(--ease-out) both; animation-delay: calc(0.08s + var(--i) * 0.038s); }
+  .wordmark__small { animation: rise-in 0.6s var(--ease-out) 0.38s both; }
+  .hero__line { animation: rise-in 0.65s var(--ease-out) 0.82s both; }
+  .hero__copy .pill { animation: rise-in 0.65s var(--ease-out) 0.9s both; }
+  .hero__cookie { animation: fly-in 1.15s var(--settle, var(--ease-out)) both; }
+  .hero__cookie--rv { --fx: -70vw; --fy: 35vh; --fr: -70deg; animation-delay: 0.26s; }
+  .hero__cookie--pi { --fx: 60vw; --fy: -45vh; --fr: 80deg; animation-delay: 0.4s; }
+  .hero__cookie--ma { --fx: 55vw; --fy: 45vh; --fr: -55deg; animation-delay: 0.52s; }
+  .seal { animation: seal-in 0.9s var(--pop, var(--ease-out)) 0.9s both; }
+}
+picture { display: contents; }
 
 @media (prefers-reduced-motion: reduce) {
   .mordida { height: auto; }

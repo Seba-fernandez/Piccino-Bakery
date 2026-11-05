@@ -7,7 +7,7 @@ Todas las fotos de producto son **sintéticas**: generadas con IA en Figma (mode
 | red-velvet.webp | Red velvet mordida con chocolate blanco | sí |
 | pistacho.webp | Cookie con crema de pistacho | sí |
 | marroc.webp | Cookie de chocolate y praliné de maní | sí |
-| choco-duo.webp | Cookie de cacao con chocolate blanco y negro | sí |
+| choco-duo.webp | Cookie de cacao con chocolate blanco y negro (regenerada sobre fondo magenta y recortada por croma, 2026-11-05) | sí |
 | frambuesa.webp | Cookie de frambuesa y chocolate blanco | sí |
 | clasica.webp | Clásica de chips entera (usada en "La mordida") | sí, idealmente vista desde arriba |
 | crumbs/c1–c12.webp | Migas separadas de una sola imagen generada | opcional |

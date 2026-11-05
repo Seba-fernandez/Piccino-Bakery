@@ -1,2 +1,4 @@
 import { defineConfig } from 'astro/config';
-export default defineConfig({});
+
+// CSS en línea: una petición menos antes del primer pintado (el CSS pesa ~15KB sin comprimir).
+export default defineConfig({ build: { inlineStylesheets: 'always' } });
