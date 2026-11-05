@@ -36,7 +36,7 @@ function heroScroll() {
 function manifesto() {
   const words = splitText('[data-split]', { words: true }).words;
   animate(words, {
-    opacity: [0.5, 1], ease: 'linear', delay: stagger(60),
+    opacity: [0.62, 1], ease: 'linear', delay: stagger(60),
     autoplay: onScroll({ target: '[data-split]', enter: '85% top', leave: '45% bottom', sync: 0.25 }),
   });
   animate('[data-cross]', {
