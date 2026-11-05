@@ -102,8 +102,8 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
   .wordmark__big { font-size: 25.5vw; line-height: 0.78; }
   .wordmark__small { font-size: clamp(4rem, 10vw, 10rem); }
   .hero__panel { inset: -10% -12% -20% 52%; height: auto; transform-origin: 50% 50%; }
-  .hero__cookie--rv { width: 62vw; left: 24vw; bottom: -34vh; }
-  .hero__cookie--pi { width: 26vw; right: -9vw; bottom: auto; top: 9vh; z-index: 2; }
+  .hero__cookie--rv { width: min(62vw, 1100px); left: 24vw; bottom: -34vh; }
+  .hero__cookie--pi { width: min(26vw, 520px); right: -9vw; bottom: auto; top: 9vh; z-index: 2; }
   .hero__cookie--ma { width: min(32vw, 560px); right: -8vw; bottom: -16vh; }
   .seal { right: auto; left: 76vw; bottom: auto; top: 50vh; }
 }
@@ -177,7 +177,8 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
 .sabor--clasica { color: var(--choco); } .sabor--clasica .sabor__slab { background: var(--sand); }
 
 @media (min-width: 760px) {
-  .sabor { min-height: max(620px, 58vw); align-content: center; padding-bottom: var(--rise); }
+  /* texto más metido hacia el centro: en pantallas anchas ya no queda pegado al borde */
+  .sabor { min-height: max(620px, 58vw); align-content: center; padding-bottom: var(--rise); padding-inline: clamp(var(--gutter), 9vw, 200px); }
   .sabor__cookie { width: 54vw; max-width: 900px; top: 50%; translate: 0 -50%; right: -9vw; }
   .sabor:nth-child(even) .sabor__cookie { left: -9vw; }
   .sabor__text { max-width: 40%; }
@@ -186,8 +187,9 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 2px
 
 /* ───── LA MORDIDA ───── */
 .mordida { --rise: 14vw; position: relative; height: 420svh; background: var(--terra); color: var(--cream); }
-/* Rellena la cuña crema que deja el último panel inclinado (mismo ángulo que las bandas); queda sólo una línea fina de 10px. */
-.mordida::before { content: ''; position: absolute; z-index: 1; left: 0; right: 0; top: calc(var(--rise) * -1 + 10px); height: var(--rise); background: var(--terra); clip-path: polygon(0 0, 100% 100%, 0 100%); pointer-events: none; }
+/* Rellena la cuña crema que deja el último panel inclinado (mismo ángulo que las bandas). Sin franja: la cuña sube 2px
+   para pisar el borde del panel, así no queda una línea clara por el antialiasing. */
+.mordida::before { content: ''; position: absolute; z-index: 1; left: 0; right: 0; top: calc(var(--rise) * -1 - 2px); height: calc(var(--rise) + 2px); background: var(--terra); clip-path: polygon(0 0, 100% 100%, 0 100%); pointer-events: none; }
 .mordida__stage {
   position: sticky; top: 0; height: 100svh; height: 100dvh; overflow: clip;
   display: grid; grid-template-rows: 1fr auto; justify-items: center; align-items: center;

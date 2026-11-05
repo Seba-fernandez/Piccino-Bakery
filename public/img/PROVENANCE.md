@@ -12,3 +12,6 @@ Todas las fotos de producto son **sintéticas**: generadas con IA en Figma (mode
 | clasica.webp | Clásica de chips entera (usada en "La mordida") | sí, idealmente vista desde arriba |
 | crumbs/c1–c12.webp | Migas separadas de una sola imagen generada | opcional |
 | clasica-bite-1..3.webp | La misma clásica con 1, 2 y 3 mordiscos: contorno irregular hecho por script sobre la foto IA | sí, junto con la clásica |
+
+## Resolución (2026-11-05)
+El generador de imágenes (Figma) entrega como máximo 1024 px por lado. Para pantallas de alta densidad las fotos se ampliaron al doble con super-resolución ESPCN (OpenCV) más un afinado suave, y después se recortaron de nuevo (relleno desde los bordes para fondo blanco; croma magenta para la choco dúo). Variantes publicadas: 480, 960 y ancho completo (~1.5–1.7 mil px), en AVIF (color 4:4:4) con WebP de respaldo. Con fotos reales de 2000 px o más se reemplazan directo y la calidad sube más.
