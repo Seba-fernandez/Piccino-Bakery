@@ -1,0 +1,176 @@
+---
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
+import '../styles/global.css';
+import copy from '../data/copy.json';
+
+const base = import.meta.env.BASE_URL;
+const img = (id: string) => `${base}img/${id}.webp`;
+const sabores = copy.sabores;
+const clasica = sabores.find((s) => s.id === 'clasica')!;
+
+// Mordiscos sobre la clásica (viewBox 0 0 100 100): centro sobre el borde, radio y ángulo hacia adentro.
+const bites = [
+  { cx: 88, cy: 26, r: 17 },
+  { cx: 10, cy: 40, r: 19 },
+  { cx: 70, cy: 92, r: 22 },
+  { cx: 50, cy: 50, r: 62 },
+];
+// Marcas de dientes: círculos chicos sobre el borde interno del mordisco.
+const teeth = (b: { cx: number; cy: number; r: number }) => {
+  const toCenter = Math.atan2(50 - b.cy, 50 - b.cx);
+  return Array.from({ length: 9 }, (_, i) => {
+    const a = toCenter + ((i - 4) / 4) * 1.15;
+    return { cx: b.cx + Math.cos(a) * (b.r + 0.6), cy: b.cy + Math.sin(a) * (b.r + 0.6), r: b.r * 0.16 };
+  });
+};
+const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Piccino bakery · Cookies artesanales</title>
+    <meta name="description" content="Piccino bakery: cookies artesanales grandes, hechas con ingredientes reales. Proyecto de branding." />
+    <meta name="theme-color" content="#1F3FD1" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preload" as="image" href={img('red-velvet')} />
+    <script is:inline>
+      // Sólo escondemos para animar si hay movimiento y JS; si el módulo falla, a los 2.5s se muestra todo.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('motion');
+        setTimeout(() => { if (!window.__piccino) document.documentElement.classList.remove('motion'); }, 2500);
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#sabores">Saltar a los sabores</a>
+
+    <header class="hero" data-hero>
+      <nav class="nav" aria-label="Principal">
+        <a class="nav__brand" href="#top" aria-label="Piccino bakery, inicio">Piccino</a>
+        <ul>
+          <li><a href="#sabores">Sabores</a></li>
+          <li><a href="#mordida">La mordida</a></li>
+          <li><a href="#instagram">Instagram</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero__panel" data-enter="panel" aria-hidden="true"></div>
+
+      <div class="hero__copy" id="top">
+        <h1 class="wordmark" data-enter="wordmark">
+          <span class="wordmark__big">Piccino</span>
+          <span class="wordmark__small">bakery</span>
+        </h1>
+        <p class="hero__tag" data-enter="tag">Cookies artesanales</p>
+        <p class="hero__line" data-enter="tag">Dale amor a tus meriendas.</p>
+        <a class="pill pill--butter" href="#sabores" data-enter="tag">
+          {copy.hero.cta}
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <img class="hero__cookie hero__cookie--rv" data-enter="cookie" data-depth="1" src={img('red-velvet')} alt={sabores[0].alt} width="841" height="755" fetchpriority="high" />
+      <img class="hero__cookie hero__cookie--pi" data-enter="cookie" data-depth="0.6" src={img('pistacho')} alt={sabores[1].alt} width="828" height="757" />
+      <img class="hero__cookie hero__cookie--ma" data-enter="cookie" data-depth="0.8" src={img('marroc')} alt={sabores[2].alt} width="831" height="739" />
+
+      <svg class="seal" data-enter="seal" data-seal viewBox="0 0 200 200" role="img" aria-label="Simple, real, irresistible. Ingredientes reales.">
+        <defs><path id="seal-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
+        <circle cx="100" cy="100" r="98" fill="var(--butter)" />
+        <circle cx="100" cy="100" r="60" fill="none" stroke="var(--choco)" stroke-width="1.5" />
+        <text><textPath href="#seal-path" textLength="488">{sealText}</textPath></text>
+        <text class="seal__name" x="100" y="104" text-anchor="middle">Piccino</text>
+        <text class="seal__sub" x="100" y="124" text-anchor="middle">BAKERY</text>
+      </svg>
+    </header>
+
+    <main>
+      <section class="manifesto" aria-label="Manifiesto">
+        <p class="manifesto__text" data-split>{copy.manifiesto}</p>
+        <p class="manifesto__sign">Hechas con ingredientes reales. Hechas con amor.</p>
+        <img class="manifesto__cookie" data-cross src={img('choco-duo')} alt="" width="858" height="768" loading="lazy" />
+      </section>
+
+      <section class="sabores" id="sabores" aria-labelledby="sabores-titulo">
+        <h2 id="sabores-titulo" class="sabores__title">{copy.sabores_titulo}</h2>
+        <ul class="sabores__grid">
+          {sabores.map((s, i) => (
+            <li class={`sabor sabor--${s.id}`} data-sabor tabindex="0">
+              <div class="sabor__slab" aria-hidden="true"></div>
+              <div class="sabor__cookie" data-settle={i % 2 ? '1' : '-1'}><img class="sabor__img" src={img(s.id)} alt={s.alt} width="840" height="760" loading="lazy" /></div>
+              <div class="sabor__text">
+                <h3>{s.nombre}</h3>
+                <p>{s.linea}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mordida" id="mordida" aria-labelledby="mordida-titulo" data-bite-section>
+        <div class="mordida__stage">
+          <h2 id="mordida-titulo" class="visually-hidden">La mordida</h2>
+          <div class="mordida__cookie" data-bite-cookie>
+            <svg viewBox="0 0 100 100" role="img" aria-label={clasica.alt}>
+              <defs>
+                <mask id="bite-mask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="140" height="140">
+                  <rect x="-20" y="-20" width="140" height="140" fill="#fff" />
+                  {bites.map((b, i) => (
+                    <g class="bite" data-bite={i} style={`transform-origin:${b.cx}px ${b.cy}px`}>
+                      <circle cx={b.cx} cy={b.cy} r={b.r} fill="#000" />
+                      {i < 3 && teeth(b).map((t) => <circle cx={t.cx.toFixed(2)} cy={t.cy.toFixed(2)} r={t.r.toFixed(2)} fill="#000" />)}
+                    </g>
+                  ))}
+                </mask>
+              </defs>
+              <image href={img('clasica')} x="1" y="0" width="98" height="100" mask="url(#bite-mask)" />
+            </svg>
+          </div>
+          {Array.from({ length: 12 }, (_, i) => (
+            <img class="crumb" data-crumb src={`${base}img/crumbs/c${i + 1}.webp`} alt="" loading="lazy" />
+          ))}
+          <div class="mordida__words" aria-live="polite">
+            <p class="mordida__step is-on" data-step="0">{copy.mordida.intro}</p>
+            {copy.mordida.pasos.map((p, i) => <p class="mordida__step" data-step={i + 1}>{p}</p>)}
+            <p class="mordida__remate" data-remate>{copy.mordida.remate}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="valores" aria-label="Lo que nos importa">
+        <ul>
+          {copy.valores.map((v) => (
+            <li>
+              <h2>{v.palabra}.</h2>
+              <p>{v.linea}</p>
+            </li>
+          ))}
+        </ul>
+        <img class="valores__cookie" src={img('frambuesa')} alt="" width="864" height="747" loading="lazy" />
+      </section>
+
+      <section class="insta" id="instagram" aria-labelledby="insta-titulo">
+        <h2 id="insta-titulo">{copy.instagram.titulo}</h2>
+        <ul class="insta__feed" aria-label="Feed ilustrativo">
+          {[...sabores].reverse().map((s) => (
+            <li class={`post post--${s.id}`}><img src={img(s.id)} alt="" width="840" height="760" loading="lazy" /></li>
+          ))}
+        </ul>
+        <a class="pill pill--butter" href="https://www.instagram.com/" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+          {copy.instagram.cta}
+        </a>
+        <p class="insta__note">@piccino.bakery es una cuenta de ejemplo de este proyecto.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__line">{copy.footer}</p>
+      <p class="footer__credit">Proyecto de branding de portfolio · Imágenes de producto generadas con IA</p>
+      <p class="footer__word" aria-hidden="true">Piccino</p>
+    </footer>
+
+    <script src="../scripts/motion.js"></script>
+  </body>
+</html>

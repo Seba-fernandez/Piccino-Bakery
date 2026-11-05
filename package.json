@@ -1,0 +1,16 @@
+{
+  "name": "piccino-bakery",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "animejs": "^4.5.0",
+    "astro": "^7.4.6"
+  }
+}

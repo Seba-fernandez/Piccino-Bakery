@@ -1,0 +1,25 @@
+{
+  "hero": { "cta": "Ver los sabores" },
+  "manifiesto": "Una cookie grande, gordita y hecha de verdad merece que le des tiempo a la merienda.",
+  "sabores_titulo": "Elegí tu mordida",
+  "sabores": [
+    { "id": "red-velvet", "nombre": "Red velvet", "linea": "Rojo profundo, corazón de chocolate blanco que se derrite.", "alt": "Cookie red velvet mordida, con chocolate blanco derretido" },
+    { "id": "pistacho", "nombre": "Pistacho", "linea": "Crema de pistacho en el centro y pistachos tostados arriba.", "alt": "Cookie con centro de crema de pistacho y pistachos tostados" },
+    { "id": "marroc", "nombre": "Marroc", "linea": "Chocolate y praliné de maní, como el bombón de siempre.", "alt": "Cookie de chocolate y praliné de maní con un trozo de bombón encima" },
+    { "id": "choco-duo", "nombre": "Choco dúo", "linea": "Chocolate blanco y negro peleándose por cada bocado.", "alt": "Cookie de cacao con chocolate blanco y negro" },
+    { "id": "frambuesa", "nombre": "Frambuesa", "linea": "Frambuesa ácida y chocolate blanco que la abraza.", "alt": "Cookie con mermelada de frambuesa, chocolate blanco y una frambuesa arriba" },
+    { "id": "clasica", "nombre": "Clásica", "linea": "Chips de chocolate y sal en escamas. Nada más.", "alt": "Cookie clásica con chips de chocolate y sal en escamas" }
+  ],
+  "mordida": {
+    "intro": "La clásica, de cerca.",
+    "pasos": ["Crujiente por fuera", "Blandita en el medio", "Chocolate que se estira", "Ya no queda nada"],
+    "remate": "Tranqui, siempre hay otra para la próxima merienda."
+  },
+  "valores": [
+    { "palabra": "Simple", "linea": "Pocas cosas, bien elegidas. Sin vueltas ni secretos raros." },
+    { "palabra": "Real", "linea": "Manteca, chocolate, harina y huevos. Lo que ves es lo que hay." },
+    { "palabra": "Irresistible", "linea": "Mirala un rato. Dale, no te hagas el fuerte." }
+  ],
+  "instagram": { "titulo": "Seguinos en Instagram", "cta": "Ir al Insta" },
+  "footer": "Hecho con las manos, la manteca y muchas ganas."
+}
