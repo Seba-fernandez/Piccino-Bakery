@@ -1,142 +1,181 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T16:48:24.484679Z",
+  "generatedAt": "2026-11-05T17:51:48.224402Z",
   "title": "Design System: Piccino bakery",
   "extensions": {
     "colorMeta": {
-      "cobalt": {
+      "brown": {
         "role": "primary",
-        "displayName": "Cobalt Ground",
+        "displayName": "Cocoa Brown",
+        "canonical": "#6e3019",
         "tonalRamp": [
-          "oklch(15% 0.067 265)",
-          "oklch(27% 0.107 265)",
-          "oklch(39% 0.147 265)",
-          "oklch(51% 0.187 265)",
-          "oklch(63% 0.173 265)",
-          "oklch(75% 0.133 265)",
-          "oklch(86% 0.097 265)",
-          "oklch(95% 0.067 265)"
+          "oklch(15% 0.032 45)",
+          "oklch(27% 0.051 45)",
+          "oklch(39% 0.071 45)",
+          "oklch(51% 0.09 45)",
+          "oklch(63% 0.084 45)",
+          "oklch(75% 0.064 45)",
+          "oklch(86% 0.047 45)",
+          "oklch(95% 0.032 45)"
         ]
       },
-      "tomato": {
+      "terra": {
         "role": "primary",
-        "displayName": "Tomato Field",
+        "displayName": "Terracotta",
+        "canonical": "#b4552f",
         "tonalRamp": [
-          "oklch(15% 0.067 30)",
-          "oklch(27% 0.107 30)",
-          "oklch(39% 0.147 30)",
-          "oklch(51% 0.187 30)",
-          "oklch(63% 0.173 30)",
-          "oklch(75% 0.133 30)",
-          "oklch(86% 0.097 30)",
-          "oklch(95% 0.067 30)"
+          "oklch(15% 0.047 42)",
+          "oklch(27% 0.074 42)",
+          "oklch(39% 0.103 42)",
+          "oklch(51% 0.13 42)",
+          "oklch(63% 0.121 42)",
+          "oklch(75% 0.092 42)",
+          "oklch(86% 0.068 42)",
+          "oklch(95% 0.047 42)"
         ]
       },
-      "butter": {
+      "apricot": {
         "role": "secondary",
-        "displayName": "Butter",
+        "displayName": "Apricot",
+        "canonical": "#e8966a",
         "tonalRamp": [
-          "oklch(15% 0.053 92)",
-          "oklch(27% 0.085 92)",
-          "oklch(39% 0.117 92)",
-          "oklch(51% 0.149 92)",
-          "oklch(63% 0.139 92)",
-          "oklch(75% 0.107 92)",
-          "oklch(86% 0.077 92)",
-          "oklch(95% 0.053 92)"
+          "oklch(15% 0.036 50)",
+          "oklch(27% 0.057 50)",
+          "oklch(39% 0.079 50)",
+          "oklch(51% 0.1 50)",
+          "oklch(63% 0.093 50)",
+          "oklch(75% 0.071 50)",
+          "oklch(86% 0.052 50)",
+          "oklch(95% 0.036 50)"
         ]
       },
       "crimson": {
         "role": "tertiary",
         "displayName": "Red Velvet Crimson",
+        "canonical": "#7a1f2b",
         "tonalRamp": [
-          "oklch(15% 0.063 18)",
-          "oklch(27% 0.101 18)",
-          "oklch(39% 0.139 18)",
-          "oklch(51% 0.177 18)",
-          "oklch(63% 0.165 18)",
-          "oklch(75% 0.127 18)",
-          "oklch(86% 0.092 18)",
-          "oklch(95% 0.063 18)"
+          "oklch(15% 0.043 12)",
+          "oklch(27% 0.068 12)",
+          "oklch(39% 0.095 12)",
+          "oklch(51% 0.12 12)",
+          "oklch(63% 0.112 12)",
+          "oklch(75% 0.085 12)",
+          "oklch(86% 0.062 12)",
+          "oklch(95% 0.043 12)"
         ]
       },
       "pista": {
         "role": "tertiary",
         "displayName": "Pistachio Sage",
+        "canonical": "#b9c79a",
         "tonalRamp": [
-          "oklch(15% 0.03 130)",
-          "oklch(27% 0.048 130)",
-          "oklch(39% 0.066 130)",
-          "oklch(51% 0.084 130)",
-          "oklch(63% 0.078 130)",
-          "oklch(75% 0.06 130)",
-          "oklch(86% 0.043 130)",
-          "oklch(95% 0.03 130)"
+          "oklch(15% 0.022 125)",
+          "oklch(27% 0.034 125)",
+          "oklch(39% 0.047 125)",
+          "oklch(51% 0.06 125)",
+          "oklch(63% 0.056 125)",
+          "oklch(75% 0.043 125)",
+          "oklch(86% 0.031 125)",
+          "oklch(95% 0.022 125)"
         ]
       },
       "rasp": {
         "role": "tertiary",
         "displayName": "Raspberry",
+        "canonical": "#a63a4f",
         "tonalRamp": [
-          "oklch(15% 0.07 10)",
-          "oklch(27% 0.112 10)",
-          "oklch(39% 0.154 10)",
-          "oklch(51% 0.196 10)",
-          "oklch(63% 0.182 10)",
-          "oklch(75% 0.14 10)",
-          "oklch(86% 0.101 10)",
-          "oklch(95% 0.07 10)"
+          "oklch(15% 0.047 8)",
+          "oklch(27% 0.074 8)",
+          "oklch(39% 0.103 8)",
+          "oklch(51% 0.13 8)",
+          "oklch(63% 0.121 8)",
+          "oklch(75% 0.092 8)",
+          "oklch(86% 0.068 8)",
+          "oklch(95% 0.047 8)"
+        ]
+      },
+      "sand": {
+        "role": "neutral",
+        "displayName": "Sand",
+        "canonical": "#f3e3c6",
+        "tonalRamp": [
+          "oklch(15% 0.014 85)",
+          "oklch(27% 0.023 85)",
+          "oklch(39% 0.032 85)",
+          "oklch(51% 0.04 85)",
+          "oklch(63% 0.037 85)",
+          "oklch(75% 0.028 85)",
+          "oklch(86% 0.021 85)",
+          "oklch(95% 0.014 85)"
         ]
       },
       "cream": {
         "role": "neutral",
         "displayName": "Cream",
+        "canonical": "#fff6ed",
         "tonalRamp": [
-          "oklch(15% 0.012 80)",
-          "oklch(27% 0.019 80)",
-          "oklch(39% 0.026 80)",
-          "oklch(51% 0.033 80)",
-          "oklch(63% 0.03 80)",
-          "oklch(75% 0.023 80)",
-          "oklch(86% 0.017 80)",
-          "oklch(95% 0.012 80)"
+          "oklch(15% 0.007 65)",
+          "oklch(27% 0.011 65)",
+          "oklch(39% 0.016 65)",
+          "oklch(51% 0.02 65)",
+          "oklch(63% 0.019 65)",
+          "oklch(75% 0.014 65)",
+          "oklch(86% 0.01 65)",
+          "oklch(95% 0.007 65)"
         ]
       },
       "choco": {
         "role": "neutral",
         "displayName": "Chocolate",
+        "canonical": "#3b1c11",
         "tonalRamp": [
-          "oklch(15% 0.017 40)",
-          "oklch(27% 0.027 40)",
-          "oklch(39% 0.037 40)",
-          "oklch(51% 0.047 40)",
-          "oklch(63% 0.043 40)",
-          "oklch(75% 0.033 40)",
-          "oklch(86% 0.024 40)",
-          "oklch(95% 0.017 40)"
+          "oklch(15% 0.018 40)",
+          "oklch(27% 0.028 40)",
+          "oklch(39% 0.04 40)",
+          "oklch(51% 0.05 40)",
+          "oklch(63% 0.047 40)",
+          "oklch(75% 0.035 40)",
+          "oklch(86% 0.026 40)",
+          "oklch(95% 0.018 40)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The Piccino wordmark, hero and footer; bleeds off the edge."
+        "purpose": "The Piccino wordmark in the hero; the footer wordmark uses the same voice in apricot."
+      },
+      "display-sub": {
+        "displayName": "Display Sub",
+        "purpose": "\"bakery\" under the hero wordmark."
+      },
+      "value": {
+        "displayName": "Value",
+        "purpose": "The three value words."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section titles and value words."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Flavour names and bite-step lines."
+        "purpose": "Section titles (flavours, Instagram)."
       },
       "statement": {
         "displayName": "Statement",
         "purpose": "Manifesto, word-by-word reveal."
       },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Flavour names."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Bite-step lines."
+      },
       "lead": {
         "displayName": "Lead",
-        "purpose": "Hero line and footer line."
+        "purpose": "Hero line."
+      },
+      "lead-sm": {
+        "displayName": "Lead Small",
+        "purpose": "Footer line and bite remate."
       },
       "body": {
         "displayName": "Body",
@@ -144,7 +183,19 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Pill buttons and nav links."
+        "purpose": "Pill buttons."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Nav links."
+      },
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "Nav wordmark."
+      },
+      "note": {
+        "displayName": "Note",
+        "purpose": "Instagram handle line and footer credit."
       }
     },
     "shadows": [
@@ -165,8 +216,8 @@
       },
       {
         "name": "shadow-tile",
-        "value": "0 14px 30px -14px rgb(10 14 60 / 0.6)",
-        "purpose": "Instagram feed tiles on cobalt."
+        "value": "0 14px 30px -14px rgb(29 10 6 / 0.45)",
+        "purpose": "Instagram feed tiles (as built; blue-black tint is a leftover from the old cobalt palette, not canonized)."
       }
     ],
     "motion": [
@@ -207,17 +258,17 @@
       "name": "Pill Button",
       "kind": "button",
       "refersTo": "button-pill",
-      "description": "Butter pill CTA with inline SVG icon; the only button style.",
+      "description": "Sand pill CTA with inline SVG icon; the only button style.",
       "html": "<a class=\"ds-pill\" href=\"#\">Conocé los sabores <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M12 4v15m0 0-6-6m6 6 6-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
-      "css": ".ds-pill{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.4em;border-radius:999px;background:var(--butter,#ffd84d);color:var(--choco,#3a2118);font-family:var(--font);font-weight:750;font-size:1.05rem;text-decoration:none;box-shadow:0 10px 24px -8px rgb(29 10 6/.45);transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms cubic-bezier(.16,1,.3,1)}.ds-pill:hover{transform:translateY(-2px) rotate(-1.5deg);box-shadow:0 16px 30px -10px rgb(29 10 6/.5)}.ds-pill:active{transform:translateY(1px) scale(.98);transition-duration:90ms}.ds-pill:focus-visible{outline:3px solid currentColor;outline-offset:4px}"
+      "css": ".ds-pill{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.4em;border-radius:999px;background:var(--sand,#f3e3c6);color:var(--choco,#3b1c11);font-family:var(--font);font-weight:750;font-size:1.05rem;text-decoration:none;box-shadow:0 10px 24px -8px rgb(29 10 6/.45);transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms cubic-bezier(.16,1,.3,1)}.ds-pill:hover{transform:translateY(-2px) rotate(-1.5deg);box-shadow:0 16px 30px -10px rgb(29 10 6/.5)}.ds-pill:active{transform:translateY(1px) scale(.98);transition-duration:90ms}.ds-pill:focus-visible{outline:3px solid currentColor;outline-offset:4px}"
     },
     {
       "name": "Navigation",
       "kind": "nav",
       "refersTo": "nav",
-      "description": "Slim hero nav on cobalt: butter wordmark, three cream links.",
+      "description": "Slim hero nav on brown: sand wordmark, three cream links.",
       "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\">Piccino</a><ul><li><a href=\"#\">Sabores</a></li><li><a href=\"#\">La mordida</a></li><li><a href=\"#\">Instagram</a></li></ul></nav>",
-      "css": ".ds-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--cobalt,#1f3fd1);color:var(--cream,#fff4e0);font-family:var(--font);font-weight:650}.ds-nav ul{display:flex;gap:24px;margin:0;padding:0;list-style:none;font-size:.95rem}.ds-nav a{color:inherit;text-decoration:none}.ds-nav ul a:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:2px}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:4px;border-radius:6px}.ds-nav-brand{color:var(--butter,#ffd84d)!important;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}"
+      "css": ".ds-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--brown,#6e3019);color:var(--cream,#fff6ed);font-family:var(--font);font-weight:650}.ds-nav ul{display:flex;gap:24px;margin:0;padding:0;list-style:none;font-size:.95rem}.ds-nav a{color:inherit;text-decoration:none}.ds-nav ul a:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:2px}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:4px;border-radius:6px}.ds-nav-brand{color:var(--sand,#f3e3c6)!important;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}"
     },
     {
       "name": "Flavour Slab",
@@ -225,7 +276,7 @@
       "refersTo": "flavour-slab-pistacho",
       "description": "Angled full-width flavour field with heavy title; cookie imagery omitted in the panel.",
       "html": "<div class=\"ds-slab\" tabindex=\"0\"><h3>Pistacho</h3><p>Crema de pistacho en el centro y pistachos tostados arriba.</p></div>",
-      "css": ".ds-slab{padding:64px 24px;background:var(--pista,#9db87a);color:var(--choco,#3a2118);font-family:var(--font);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%);transition:filter 420ms cubic-bezier(.16,1,.3,1)}.ds-slab h3{margin:0;font-size:3rem;font-weight:800;letter-spacing:-.04em;line-height:.92}.ds-slab p{margin:.5rem 0 0;font-weight:550;max-width:26ch}.ds-slab:hover,.ds-slab:focus-visible{filter:brightness(1.04);outline:none}"
+      "css": ".ds-slab{padding:64px 24px;background:var(--pista,#b9c79a);color:var(--choco,#3b1c11);font-family:var(--font);clip-path:polygon(0 40px,100% 0,100% calc(100% - 40px),0 100%);transition:filter 420ms cubic-bezier(.16,1,.3,1)}.ds-slab h3{margin:0;font-size:3rem;font-weight:800;letter-spacing:-.04em;line-height:.92}.ds-slab p{margin:.5rem 0 0;font-weight:550;max-width:26ch}.ds-slab:hover,.ds-slab:focus-visible{filter:brightness(1.04);outline:none}"
     },
     {
       "name": "Feed Tile",
@@ -233,24 +284,24 @@
       "refersTo": "feed-tile",
       "description": "Rounded flavour-colour square in the illustrative Instagram feed.",
       "html": "<div class=\"ds-tile\"></div>",
-      "css": ".ds-tile{width:160px;aspect-ratio:1;border-radius:18px;background:var(--rasp,#d6204f);box-shadow:0 14px 30px -14px rgb(10 14 60/.6);rotate:-3deg;transition:transform 300ms cubic-bezier(.16,1,.3,1)}.ds-tile:hover{transform:scale(1.04)}"
+      "css": ".ds-tile{width:160px;aspect-ratio:1;border-radius:18px;background:var(--rasp,#a63a4f);box-shadow:0 14px 30px -14px rgb(10 14 60/.6);rotate:-3deg;transition:transform 300ms cubic-bezier(.16,1,.3,1)}.ds-tile:hover{transform:scale(1.04)}"
     },
     {
       "name": "Seal",
       "kind": "custom",
       "refersTo": "seal",
-      "description": "Butter circular seal with text on a path; rotated -12deg.",
-      "html": "<svg class=\"ds-seal\" viewBox=\"0 0 200 200\" role=\"img\" aria-label=\"Simple, real, irresistible\"><defs><path id=\"ds-sp\" d=\"M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0\"/></defs><circle cx=\"100\" cy=\"100\" r=\"98\" fill=\"#ffd84d\"/><circle cx=\"100\" cy=\"100\" r=\"60\" fill=\"none\" stroke=\"#3a2118\" stroke-width=\"1.5\"/><text><textPath href=\"#ds-sp\" textLength=\"488\">SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · </textPath></text><text class=\"ds-seal-name\" x=\"100\" y=\"104\" text-anchor=\"middle\">Piccino</text></svg>",
-      "css": ".ds-seal{width:160px;rotate:-12deg;filter:drop-shadow(0 8px 14px rgb(29 10 6/.35))}.ds-seal text{fill:#3a2118;font-family:var(--font);font-weight:700;font-size:14.5px;letter-spacing:.06em}.ds-seal .ds-seal-name{font-size:25px;font-weight:800;letter-spacing:-.02em}"
+      "description": "Sand circular seal with text on a path; rotated -12deg.",
+      "html": "<svg class=\"ds-seal\" viewBox=\"0 0 200 200\" role=\"img\" aria-label=\"Simple, real, irresistible\"><defs><path id=\"ds-sp\" d=\"M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0\"/></defs><circle cx=\"100\" cy=\"100\" r=\"98\" fill=\"#f3e3c6\"/><circle cx=\"100\" cy=\"100\" r=\"60\" fill=\"none\" stroke=\"#3b1c11\" stroke-width=\"1.5\"/><text><textPath href=\"#ds-sp\" textLength=\"488\">SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · </textPath></text><text class=\"ds-seal-name\" x=\"100\" y=\"104\" text-anchor=\"middle\">Piccino</text></svg>",
+      "css": ".ds-seal{width:160px;rotate:-12deg;filter:drop-shadow(0 8px 14px rgb(29 10 6/.35))}.ds-seal text{fill:#3b1c11;font-family:var(--font);font-weight:700;font-size:14.5px;letter-spacing:.06em}.ds-seal .ds-seal-name{font-size:25px;font-weight:800;letter-spacing:-.02em}"
     }
   ],
   "narrative": {
     "northStar": "The Pop Cookie Poster",
-    "overview": "Every section is a drenched primary field, and a cut-out cookie photograph, larger than any word on screen, bleeds off its edge. Type is one heavy variable grotesque set tight and huge; colour does the structuring, never lines or boxes. Panels are angled, cookies are tilted, nothing sits square.\n\nMotion is physical: cookies are thrown in and settle on a spring, a classic gets bitten frame by frame as you scroll and drops real crumbs, the seal spins in. Everything resolves to a complete static poster under `prefers-reduced-motion`.",
+    "overview": "Every section is a drenched field of warm bakery colour (chocolate-brown, terracotta, sand, cream), and a cut-out cookie photograph, larger than any word on screen, bleeds off its edge. The palette is taken from the brand's real Instagram, so it reads as baked goods and packaging rather than poster primaries. Type is one heavy variable grotesque set tight and huge; colour does the structuring, never lines or boxes. Panels are angled, cookies are tilted, nothing sits square.\n\nMotion is physical: cookies are thrown in and settle on a spring, a classic gets bitten frame by frame as you scroll and drops real crumbs, the seal spins in. Everything resolves to a complete static poster under `prefers-reduced-motion`.",
     "keyCharacteristics": [
       "Full-bleed colour fields, one per section, edge to edge.",
       "Product cut-outs at 55-104vw, rotated (-16° to 18°), cropped by the viewport.",
-      "One typeface, weights 550-800, negative tracking on everything display.",
+      "One typeface, weights 550-800 (400 for body), negative tracking on everything display.",
       "Angled slabs (~8°) instead of borders or cards."
     ],
     "rules": [
@@ -260,18 +311,28 @@
         "section": "colors"
       },
       {
-        "name": "The Large-Only Tomato Rule",
-        "body": "Cream on tomato (≈3.8:1) and tomato on chocolate (≈3.6:1) are for large bold type only (≥24px bold). Body-size text goes on cobalt, chocolate, crimson, butter or cream.",
+        "name": "The Apricot-On-Dark Rule",
+        "body": "Apricot is text on chocolate only (≈6.6:1). It is never a field and never text on light or terracotta (≈2.1:1 on terra).",
+        "section": "colors"
+      },
+      {
+        "name": "The No Terracotta Text On Dark Rule",
+        "body": "Terracotta on chocolate is ≈3.15:1, so terracotta never carries text on a dark field; use apricot there. Terracotta is a field: cream on terra is ≈4.6:1 (passes body size narrowly), sand on terra ≈3.9:1 (large bold type only, ≥24px bold, as with the sand wordmark over the hero panel).",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Contrast Rule",
+        "body": "Cream on brown ≈9.4:1, sand on brown ≈7.9:1, cream on crimson ≈9.5:1, cream on raspberry ≈5.9:1, chocolate on pistachio ≈8.6:1, chocolate on sand/cream ≈12-14:1. These pairings are the safe defaults for any size.",
         "section": "colors"
       },
       {
         "name": "The Tight Heavy Rule",
-        "body": "Anything at 2rem or larger is weight ≥ 780 with tracking -0.035em to -0.04em and line-height ≤ 1.0, with `text-wrap: balance`.",
+        "body": "Anything at 2rem or larger is weight ≥ 780 with tracking -0.035em to -0.04em and line-height ≤ 1.0, with `text-wrap: balance` where it wraps. Exceptions that keep ≥ 650: lead lines (1.1 line-height).",
         "section": "typography"
       },
       {
         "name": "The Shadow Belongs To Food Rule",
-        "body": "Shadows exist to make product and the few touchable things (pill, tile, seal) feel like objects; surfaces and fields are always flat.",
+        "body": "Shadows exist to make product and the few touchable things (pill, tile, seal) feel like objects; surfaces and fields are always flat. Shadow tint is the chocolate `rgb(29 10 6)`.",
         "section": "elevation"
       }
     ],
@@ -279,12 +340,14 @@
       "**Do** give every new section one full-bleed field from the palette and at least one cookie larger than its headline.",
       "**Do** crop and rotate product imagery past the viewport edge and give it the chocolate drop shadow.",
       "**Do** separate areas with colour changes and ~8° angled cuts.",
+      "**Do** use apricot for text on chocolate and cream or sand for text on brown or terracotta.",
       "**Do** ship a static reduced-motion state that shows the final composition.",
       "**Do** keep flavour colours tied to their flavour."
     ],
     "donts": [
       "**Don't** draw borders, outlines or boxed cards around content; the feed tiles are the one rounded container.",
-      "**Don't** use body-size text on tomato (contrast below 4.5:1).",
+      "**Don't** set terracotta text on a dark field (≈3.15:1), or apricot on light or terracotta fields (≈2.1:1).",
+      "**Don't** set sand text below large bold size on terracotta (≈3.9:1).",
       "**Don't** add a second typeface or set display type at weights below 780.",
       "**Don't** use hard offset shadows or grey/black shadows; shadows are soft and chocolate-tinted.",
       "**Don't** centre everything on cream with equal product cards; that is the category default this system rejects."

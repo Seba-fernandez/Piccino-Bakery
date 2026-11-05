@@ -17,7 +17,7 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Piccino bakery · Cookies artesanales</title>
     <meta name="description" content="Piccino bakery: cookies artesanales grandes, hechas con ingredientes reales. Proyecto de branding." />
-    <meta name="theme-color" content="#1F3FD1" />
+    <meta name="theme-color" content="#6E3019" />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <link rel="preload" as="image" href={img('red-velvet')} />
     <script is:inline>
@@ -49,7 +49,7 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
           <span class="wordmark__small">bakery <span class="wordmark__note">cookies artesanales</span></span>
         </h1>
         <p class="hero__line" data-enter="tag">Dale amor a tus meriendas.</p>
-        <a class="pill pill--butter" href="#sabores" data-enter="tag">
+        <a class="pill pill--sand" href="#sabores" data-enter="tag">
           {copy.hero.cta}
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -61,7 +61,7 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
 
       <svg class="seal" data-enter="seal" data-seal viewBox="0 0 200 200" role="img" aria-label="Simple, real, irresistible. Ingredientes reales.">
         <defs><path id="seal-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
-        <circle cx="100" cy="100" r="98" fill="var(--butter)" />
+        <circle cx="100" cy="100" r="98" fill="var(--sand)" />
         <circle cx="100" cy="100" r="60" fill="none" stroke="var(--choco)" stroke-width="1.5" />
         <text><textPath href="#seal-path" textLength="488">{sealText}</textPath></text>
         <text class="seal__name" x="100" y="104" text-anchor="middle">Piccino</text>
@@ -129,11 +129,11 @@ const sealText = 'SIMPLE · REAL · IRRESISTIBLE · INGREDIENTES REALES · ';
             <li class={`post post--${s.id}`}><img src={img(s.id)} alt="" width="840" height="760" loading="lazy" /></li>
           ))}
         </ul>
-        <a class="pill pill--butter" href="https://www.instagram.com/" rel="noopener" target="_blank">
+        <a class="pill pill--sand" href="https://www.instagram.com/piccinobakery/" rel="noopener" target="_blank">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
           {copy.instagram.cta}
         </a>
-        <p class="insta__note">@piccino.bakery es una cuenta de ejemplo de este proyecto.</p>
+        <p class="insta__note">@piccinobakery · Córdoba Capital</p>
       </section>
     </main>
 

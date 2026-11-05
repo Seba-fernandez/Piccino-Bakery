@@ -26,12 +26,12 @@ Cookies "simple, real, irresistible": big, chunky, artisanal cookies made with r
 
 ## Brand Commitments
 - Name: Piccino bakery. Tagline in use: "Cookies artesanales". Line: "Dale amor a tus meriendas." Seal: "Simple · Real · Irresistible · Ingredientes reales". "Hechas con ingredientes reales. Hechas con amor."
-- Palette pinned by the user: tomato/cobalt primaries (high contrast, friendly), see the surface brief.
-- Reference: a poster with angled colour panels and giant cookie photos bleeding off the edges.
+- Palette taken from the real Instagram (@piccinobakery): chocolate brown #6E3019 and #5F342B, cream #FFF6ED / #F8F1E7, plus terracotta and sand derived for contrast. Real logo: serif small-caps "Piccino bakery" with a line-drawn hand holding a cookie (not yet on the site). Real facts: Córdoba Capital, "galletas de autor", orders one day ahead.
+- Layout reference from the user: a poster with angled colour panels and giant cookie photos bleeding off the edges.
 
 ## Evidence on Hand
 - 6 cookie images, AI-generated (synthetic), background removed: public/img/*.webp|png. The user has some real photos to swap in later.
-- No real customers, reviews, press, addresses or social handles: do not invent them. Instagram links point to a placeholder handle marked as such.
+- Real Instagram: @piccinobakery (Córdoba Capital). No customers, reviews or press to quote: do not invent them.
 
 ## Product Principles
 1. The cookie is the hero: imagery always larger than anything else.
